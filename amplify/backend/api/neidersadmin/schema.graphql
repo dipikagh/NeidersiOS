@@ -1,0 +1,68 @@
+type Users  @model @auth(rules: [{allow: public}]) {
+    id: ID!
+    login_type: String
+    full_name: String
+    email: String
+    phone: String
+    password: String
+    otp: Int
+    email_validation_token: String
+    email_validation_token_timestamp: String
+    forgot_password_token: String
+    forgot_password_token_timestamp: String
+    is_email_valid: Boolean
+    is_phone_valid: Boolean
+    status: Boolean
+    deleted: Boolean
+    created: String
+}
+
+type Contents  @model @auth(rules: [{allow: public}]) {
+    id: ID!
+    title: String
+    subject: String
+    keyword: String
+    author: String
+    language: String
+    organization_name: String
+    content_type: String
+    content_name : String
+    content_url : String
+    uploaded_by: String
+    upload_time: String
+    status: Boolean
+    deleted: Boolean
+    created: String
+}
+
+
+type ContentUnit  @model @auth(rules: [{allow: public}]) {
+    id: ID!
+    course_id : String
+    unit_number : String
+    title: String
+    keyword: String
+    language: String
+    content_type: String
+    content_name: String
+    content_url: String
+    uploaded_by: String
+    upload_time: String
+    status: Boolean
+    deleted: Boolean
+    created: String
+  }
+
+
+  
+type AdminUserss  @model @auth(rules: [{allow: public}]) {
+    id: ID!
+    name: String
+    email: String
+    phone: String
+    password: String
+    status: Boolean
+    deleted: Boolean
+    created: String
+  }
+      

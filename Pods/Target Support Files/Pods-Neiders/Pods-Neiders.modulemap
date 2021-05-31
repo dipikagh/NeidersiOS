@@ -1,0 +1,6 @@
+framework module Pods_Neiders {
+  umbrella header "Pods-Neiders-umbrella.h"
+
+  export *
+  module * { export * }
+}

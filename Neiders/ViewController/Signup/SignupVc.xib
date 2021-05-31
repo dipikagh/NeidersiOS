@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignupVc" customModule="Neiders" customModuleProvider="target">
+            <connections>
+                <outlet property="tableSignup" destination="mp7-2f-XLu" id="KAa-SL-3LG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image-1" translatesAutoresizingMaskIntoConstraints="NO" id="Gg9-HA-nfM">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ysb-4i-ckT">
+                    <rect key="frame" x="62" y="104" width="290" height="135"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ysb-4i-ckT" secondAttribute="height" multiplier="15:7" id="0A3-hj-Zqb"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mp7-2f-XLu">
+                    <rect key="frame" x="0.0" y="274" width="414" height="622"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEL-nL-UGg">
+                    <rect key="frame" x="10" y="84" width="37.5" height="37.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MEL-nL-UGg" secondAttribute="height" multiplier="1:1" id="TlD-rv-cL6"/>
+                    </constraints>
+                    <color key="tintColor" name="CustomYellow"/>
+                    <state key="normal" image="back_btn_icon"/>
+                    <connections>
+                        <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="31h-ND-01U"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="MEL-nL-UGg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="1JD-qu-okf"/>
+                <constraint firstAttribute="bottom" secondItem="Gg9-HA-nfM" secondAttribute="bottom" id="8CM-oh-XKh"/>
+                <constraint firstItem="Gg9-HA-nfM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8jR-MK-8Sp"/>
+                <constraint firstItem="mp7-2f-XLu" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9oC-el-3sU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gg9-HA-nfM" secondAttribute="trailing" id="IBl-xl-CzE"/>
+                <constraint firstItem="mp7-2f-XLu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KjJ-q5-il6"/>
+                <constraint firstAttribute="bottom" secondItem="mp7-2f-XLu" secondAttribute="bottom" id="NgD-xh-lTq"/>
+                <constraint firstItem="ysb-4i-ckT" firstAttribute="width" secondItem="Gg9-HA-nfM" secondAttribute="width" multiplier="0.7" id="RPn-m5-ILh"/>
+                <constraint firstItem="Gg9-HA-nfM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="S2a-eY-VGH"/>
+                <constraint firstItem="ysb-4i-ckT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="aG2-FD-Qdg"/>
+                <constraint firstItem="MEL-nL-UGg" firstAttribute="width" secondItem="Gg9-HA-nfM" secondAttribute="width" multiplier="0.09" id="fZq-68-6An"/>
+                <constraint firstItem="MEL-nL-UGg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gkA-L1-jfS"/>
+                <constraint firstItem="mp7-2f-XLu" firstAttribute="top" secondItem="ysb-4i-ckT" secondAttribute="bottom" constant="35" id="jP1-jK-ddU"/>
+                <constraint firstItem="ysb-4i-ckT" firstAttribute="centerX" secondItem="Gg9-HA-nfM" secondAttribute="centerX" id="ofF-Rx-emt"/>
+                <constraint firstItem="ysb-4i-ckT" firstAttribute="width" secondItem="ysb-4i-ckT" secondAttribute="height" multiplier="15:7" id="zHN-pf-KrG"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back_btn_icon" width="64" height="64"/>
+        <image name="bg_image-1" width="1242" height="2688"/>
+        <image name="logo" width="750" height="601"/>
+        <namedColor name="CustomYellow">
+            <color red="0.93000000715255737" green="0.64999997615814209" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

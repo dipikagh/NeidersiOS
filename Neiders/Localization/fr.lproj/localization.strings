@@ -1,0 +1,64 @@
+/* 
+  localization.strings
+  Neiders
+
+  Created by DIPIKA GHOSH on 18/05/21.
+  
+*/
+
+"Sign up" = "S'inscrire";
+"User Name" = "Nom d'utilisateur";
+"Password" = "Mot de passe";
+"Forgot Password" = "Mot de passe oublié?";
+"Log in with Facebook" = "Se connecter avec Facebook";
+"Don't have an Account? Create an Account"  = "Vous n'avez pas de compte? créer un compte";
+"Create Account" = "Créer un compte";
+"Login" = "Connexion";
+"Full Name" = "Nom et prénom";
+"Email Id" = "Identifiant de courriel";
+"Phone Number" = "Numéro de téléphone";
+"I am" = "Je suis";
+"Student" = "Élève";
+"Teacher" = "Professeur";
+"Please enter your full name" = "S'il vous plait entrez votre nom entier";
+"please enter your email address" = "veuillez entrer votre adresse e-mail";
+"please enter your proper email address" = "veuillez entrer votre adresse e-mail appropriée";
+"please enter your password" = "s'il vous plait entrez votre mot de passe";
+"Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols" = "Le mot de passe doit contenir au moins 8 caractères, y compris la chaîne supérieure, la chaîne inférieure, les symboles alphanumériques et spéciaux";
+"please enter your Phone number" = "Veuillez entrer votre numéro de téléphone";
+"Please enter proper phone number" = "Veuillez entrer le bon numéro de téléphone";
+"please select user type" = "veuillez sélectionner le type d'utilisateur";
+"This user is already exists. Please try with another information" = "Cet utilisateur existe déjà. Veuillez essayer avec une autre information";
+"Some thing went wrong. Please try again later" = "Quelque chose a mal tourné. Veuillez réessayer plus tard";
+"Wrong credential! \nPlease check your Email or Password" = "Mauvais identifiant! \nVeuillez vérifier votre adresse e-mail ou votre mot de passe";
+"Enter the OTP sent to your registered mobile number" = "Entrez l'OTP envoyé à votre numéro de mobile enregistré";
+"Retype Password" = "Retaper le mot de passe";
+"Validate" = "VALIDER";
+"Save" = "SAUVEGARDER";
+"No data found" = "Aucune donnée disponible";
+"Filter" = "Filtre";
+"Search here" = "Cherche ici";
+"Home" = "Domicile";
+"Edit Password" = "Modifier le mot de passe";
+"Language" = "Langue";
+"Log out" = "Se déconnecter";
+"Hello" = "Bonjour";
+"Old Password" = "ancien mot de passe";
+"New Password" = "nouveau mot de passe";
+"Confirm New Password" = "Confirmer le nouveau mot de passe";
+"Organisation Name" = "Nom de l'organisme";
+"Content Type" = "Type de contenu";
+"APPLY" = "APPLIQUER";
+"Additional Course" = "Cours supplémentaire";
+"Select App default Language" = "Sélectionnez la langue par défaut de l'application";
+"CANCEL" = "ANNULER";
+"Please select at least one option to continue." = "Veuillez sélectionner au moins une option pour continuer.";
+"Are you sure you want to logout?" = "Êtes-vous sûr de vouloir vous déconnecter?";
+"YES" = "OUI";
+"Sign up successful" = "Registro exitoso";
+"Wrong OTP! Please try again" = "Mauvais OTP! Veuillez réessayer";
+"Old Passsword is incorrect" = "L'ancien mot de passe est incorrect";
+"New password and confirm new password field does not matched" = "Le nouveau mot de passe et le champ de confirmation du nouveau mot de passe ne correspondent pas";
+"Old Password field can not be blank" = "Le champ de l'ancien mot de passe ne peut pas être vide";
+"New Password field can not be blank" = "Le champ Nouveau mot de passe ne peut pas être vide";
+"Confirm New Password field can not be blank" = "Le champ Confirmer le nouveau mot de passe ne peut pas être vide";

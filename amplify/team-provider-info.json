@@ -1,0 +1,20 @@
+{
+  "develop": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-neidersadmin-develop-132208-authRole",
+      "UnauthRoleArn": "arn:aws:iam::944458252180:role/amplify-neidersadmin-develop-132208-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::944458252180:role/amplify-neidersadmin-develop-132208-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-neidersadmin-develop-132208-deployment",
+      "UnauthRoleName": "amplify-neidersadmin-develop-132208-unauthRole",
+      "StackName": "amplify-neidersadmin-develop-132208",
+      "StackId": "arn:aws:cloudformation:us-east-1:944458252180:stack/amplify-neidersadmin-develop-132208/f52e6710-b2f6-11eb-b857-0e0c962da451",
+      "AmplifyAppId": "dk70it2gqa9jb"
+    },
+    "categories": {
+      "auth": {
+        "neidersadmin4e2a3c54": {}
+      }
+    }
+  }
+}

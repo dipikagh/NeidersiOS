@@ -1,0 +1,64 @@
+/* 
+  localization.strings
+  Neiders
+
+  Created by DIPIKA GHOSH on 18/05/21.
+  
+*/
+
+"Sign up" = "SIGN UP";
+"User Name" = "User Name";
+"Password" = "Password";
+"Forgot Password" = "Forgot Password?";
+"Log in with Facebook" = "Log in with Facebook";
+"Don't have an Account? Create an Account" = "  Don't  have  an  Account? Create Account";
+"Create Account" = "Create an Account";
+"Login" = "LOGIN";
+"Full Name" = "Full Name";
+"Email Id" = "Email Id";
+"Phone Number" = "Phone Number";
+"I am" = "I am";
+"Student" = "Student";
+"Teacher" = "Teacher";
+"Please enter your full name" = "Please enter your full name";
+"please enter your email address" = "please enter your email address";
+"please enter your proper email address" = "please enter your proper email address";
+"please enter your password" = "please enter your password";
+"Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols" = "Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols";
+"please enter your Phone number" = "please enter your Phone number";
+"Please enter proper phone number" = "Please enter proper phone number";
+"please select user type" = "please select user type";
+"This user is already exists. Please try with another information" = "This user is already exists. Please try with another information";
+"Some thing went wrong. Please try again later" = "Some thing went wrong. Please try again later";
+"Wrong credential! \nPlease check your Email or Password" = "Wrong credential! \nPlease check your Email or Password";
+"Enter the OTP sent to your registered mobile number" = "Enter the OTP sent to your registered mobile number";
+"Retype Password" = "Retype Password";
+"Validate" = "VALIDATE";
+"Save" = "SAVE";
+"No data found" = "No data found";
+"Filter" = "Filter";
+"Search here" = "Search here";
+"Home" = "Home";
+"Edit Password" = "Edit Password";
+"Language" = "Language";
+"Log out" = "Log out";
+"Hello" = "Hello";
+"Old Password" = "Old Password";
+"New Password" = "New Password";
+"Confirm New Password" = "Confirm New Password";
+"Organisation Name" = "Organisation Name";
+"Content Type" = "Content Type";
+"APPLY" = "APPLY";
+"Additional Course" = "Additional Course";
+"Select App default Language" = "Select App default Language";
+"CANCEL" = "CANCEL";
+"Please select at least one option to continue." = "Please select at least one option to continue.";
+"Are you sure you want to logout?" = "Are you sure you want to logout?";
+"YES" = "YES";
+"Sign up successful" = "Sign up successful";
+"Wrong OTP! Please try again" = "Wrong OTP! Please try again";
+"Old Passsword is incorrect" = "Old Passsword is incorrect";
+"New password and confirm new password field does not matched" = "New password and confirm new password field does not matched";
+"Old Password field can not be blank" = "Old Password field can not be blank";
+"New Password field can not be blank" = "New Password field can not be blank";
+"Confirm New Password field can not be blank" = "Confirm New Password field can not be blank";
