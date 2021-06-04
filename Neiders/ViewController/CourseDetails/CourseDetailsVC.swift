@@ -117,6 +117,7 @@ extension CourseDetailsVC: UICollectionViewDataSource, UICollectionViewDelegate,
         let imgurl = (viewmodelCourseDetails?.arrayUnit[indexPath.row].content_url ?? "").components(separatedBy: "?")
         let webvc = UnitWebVC(nibName: "UnitWebVC", bundle: nil)
         webvc.urlstr =  imgurl[0]
+        webvc.contentType = viewmodelCourseDetails?.arrayUnit[indexPath.row].content_type ?? ""
         self.navigationController?.pushViewController(webvc, animated: true)
     }
 }

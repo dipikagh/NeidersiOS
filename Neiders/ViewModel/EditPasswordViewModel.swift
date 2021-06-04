@@ -54,27 +54,19 @@ class EditPasswordViewModel: EditPasswordViewModelProtocol {
                         let updatedTodo = user
                        
                       
-                        Amplify.DataStore.save(updatedTodo!) { result in
-                        switch result {
-                        case .success(let savedTodo):
-                          
-                          print("Updated item: \(savedTodo as Any )")
-                            completion(.success(true))
-                        case .failure(let error):
-                            completion(.success(false))
-                          print("Could not update data with error: \(error)")
+                        
+                          Amplify.DataStore.save(updatedTodo!) { result in
+                          switch result {
+                          case .success(let savedTodo):
+                            
+                            print("Updated item: \(savedTodo as Any )")
+                              completion(.success(true))
+                          case .failure(let error):
+                              completion(.success(false))
+                            print("Could not update data with error: \(error)")
+                          }
                         }
-                      }
-//                    self.toggleComplete(user!,completion: {(result) in
-//                        switch result {
-//                        case .success(let value):
-//                            if let success =  value as? Bool {
-//                                completion(.success(success))
-//                            }
-//                        case .failure(let error):
-//                            completion(.failure(NeidersError.customMessage(error.localizedDescription)))
-//                        }
-//                    })
+
                     }else {
                         completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
                     }

@@ -28,7 +28,7 @@
 "please enter your Phone number" = "please enter your Phone number";
 "Please enter proper phone number" = "Please enter proper phone number";
 "please select user type" = "please select user type";
-"This user is already exists. Please try with another information" = "This user is already exists. Please try with another information";
+"This user is already exists. Please try with another information" = "This user already exists.Please try with another information.";
 "Some thing went wrong. Please try again later" = "Some thing went wrong. Please try again later";
 "Wrong credential! \nPlease check your Email or Password" = "Wrong credential! \nPlease check your Email or Password";
 "Enter the OTP sent to your registered mobile number" = "Enter the OTP sent to your registered mobile number";
@@ -58,7 +58,14 @@
 "Sign up successful" = "Sign up successful";
 "Wrong OTP! Please try again" = "Wrong OTP! Please try again";
 "Old Passsword is incorrect" = "Old Passsword is incorrect";
-"New password and confirm new password field does not matched" = "New password and confirm new password field does not matched";
+"New password and confirm new password field does not matched" = "New password and confirm new password field does not match";
 "Old Password field can not be blank" = "Old Password field can not be blank";
 "New Password field can not be blank" = "New Password field can not be blank";
 "Confirm New Password field can not be blank" = "Confirm New Password field can not be blank";
+"Email does not exit" = "Email does not exit";
+"RESEND OTP" = "RESEND OTP";
+"Time left" = "Time left";
+"Please enter registered email address" = "Please enter registered email address";
+"Please enter 4 digit Otp" = "Please enter 4 digit Otp";
+"Please signin to continue" = "Please signin to continue";
+"English is already selected" = "English is already selected";

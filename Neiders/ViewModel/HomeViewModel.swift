@@ -67,7 +67,7 @@ class HomeViewModel:HomeViewModelProtocol {
                 case .success(let Contents):
                     self.dataService?.append(contentsOf: Contents)
                     self.arrayContentList.append(contentsOf: Contents)
-                    print("Successfully retrieved list  \(Contents[0])")
+                   // print("Successfully retrieved list  \(Contents[0])")
                     completion(.success(true))
 
                 case .failure(let error):

@@ -11,7 +11,7 @@ import UIKit
 protocol LanguageSelectProtocol:class {
     func setLanguageHome()
 }
-class LanguageVC: UIViewController {
+class LanguageVC: UIViewController,AlertDisplayer {
 
     @IBOutlet weak var btnApply: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
@@ -62,7 +62,35 @@ class LanguageVC: UIViewController {
     }
     
     @IBAction func buttonApply(_ sender: Any) {
-       
+        if let lang = UserDefaults.standard.value(forKey: "LANG") {
+            if lang as? String == strSlectedLang {
+                if (strSlectedLang == "ENG") {
+                let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                    self.delegate?.setLanguageHome()
+                    self.dismiss(animated: true, completion: nil)
+
+                }
+
+                self.showAlertWith(message: "English is already selected".localized(), type: .custom(actions: [alertOkAction]))
+                }else {
+                    let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        self.delegate?.setLanguageHome()
+                        self.dismiss(animated: true, completion: nil)
+
+                    }
+
+                    self.showAlertWith(message: "English is already selected".localized(), type: .custom(actions: [alertOkAction]))
+                }
+            }else {
+                if (strSlectedLang == "ENG") {
+                    UserDefaults.standard.set("ENG", forKey: "LANG")
+                }else {
+                    UserDefaults.standard.set("FR", forKey: "LANG")
+                }
+                delegate?.setLanguageHome()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }else {
         if (strSlectedLang == "ENG") {
             UserDefaults.standard.set("ENG", forKey: "LANG")
         }else {
@@ -70,6 +98,7 @@ class LanguageVC: UIViewController {
         }
         delegate?.setLanguageHome()
         self.dismiss(animated: true, completion: nil)
+        }
     }
     @IBAction func buttonCancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

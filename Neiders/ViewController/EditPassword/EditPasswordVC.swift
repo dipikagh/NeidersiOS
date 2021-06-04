@@ -16,7 +16,7 @@ class EditPasswordVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     @IBOutlet weak var tableviewEditPassword: UITableView!
     var arrayInputField = [["Old Password".localized(),"password_icon"], ["New Password".localized(),"password_icon"],["Confirm New Password".localized(),"password_icon"]]
     var Userd = Users()
-    var viewModelEditPassword: EditPasswordViewModel?
+    var viewModelEditPassword:EditPasswordViewModel?
     var iconClick = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,10 +103,11 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
       
     }
     @objc func btnSubmitClick(_ sender:UIButton){
-       // self.navigationController?.popViewController(animated: true)
-      //  updatePassword()
-       // UPdate()
-        updateNewPassword()
+        callEditPasswordApi()
+//       // self.navigationController?.popViewController(animated: true)
+//      //  updatePassword()
+//       // UPdate()
+//        updateNewPassword()
     }
     
     @objc func textInputValue(_ textfield:UITextField) {
@@ -153,7 +154,7 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
             showAlertWith(message:"Confirm New Password field can not be blank".localized())
         }
         else if viewModelEditPassword?.arrayContainer[2] != viewModelEditPassword?.arrayContainer[1] {
-            showAlertWith(message:"New password and confirm new password field does not matched".localized())
+            showAlertWith(message:"New password and confirm new password field does not match".localized())
         }
         else {
             DispatchQueue.main.async {
@@ -238,46 +239,7 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
         
         
     }
-    //{
-//        DispatchQueue.main.async {
-//            showActivityIndicator(viewController: self)
-//        }
-//        viewModelEditPassword?.UPdate(completion: {(result) in
-//            DispatchQueue.main.async {
-//            switch result {
-//
-//            case .success(let result):
-//                hideActivityIndicator()
-//                if let success = result as? Users , success.phone != "" {
-//                    print(success.phone as Any)
-//                    let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
-//
-//                        _ = self.navigationController?.popViewController(animated: true)
-//                                let previousViewController = self.navigationController?.viewControllers.last as? HomeVC
-//
-//                        previousViewController?.isFromFilter = false
-//
-//
-//                    }
-////                    let cancelAction = UIAlertAction(title: "NO", style: .cancel) { (_) in
-////
-////                    }
-//
-//                    self.showAlertWith(message: "You have changed your password successfully".localized(), type: .custom(actions: [alertOkAction]))
-//
-//
-//
-//                    }
-//
-//
-//            case .failure(let error):
-//                hideActivityIndicator()
-//                self.showAlertWith(message: error.localizedDescription)
-//
-//            }
-//            }
-//        })
-//    }
+   
     
     func updatePassword(){
         let user = Users.keys
@@ -327,6 +289,40 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
        
     }
     
+    func callEditPasswordApi(){
+       
+        DispatchQueue.main.async {
+            showActivityIndicator(viewController: self)
+        }
+        viewModelEditPassword?.UPdate(completion: { (result) in
+            DispatchQueue.main.async {
+            switch result{
+            case .success(let result):
+//            DispatchQueue.main.async {
+                
+                hideActivityIndicator()
+                if let success = result as? Bool , success == true {
+                    let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        self.navigationController?.popViewController(animated: true)
+
+                    }
+
+                    self.showAlertWith(message: "You have changed your password successfully".localized(), type: .custom(actions: [alertOkAction]))
+                }else {
+                    self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+                }
+           // }
+            case .failure(let error):
+                hideActivityIndicator()
+            self.showAlertWith(message: error.localizedDescription)
+            }
+            }
+            
+            
+        })
+       // self.navigationController?.popViewController(animated: true)
+    }
+    
    
 //        func updateTodo(){
 //                Amplify.API.query(request: .get(Todo.self, byId: "FE978EC7-615F-4B2A-AB1C-0902B186377E")) { event in
@@ -364,72 +360,11 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
 //            }
     
     func UPdate(){
-//        let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
-//        //        print(Id)
-//
-//        var userpass = AmplifyVersionNumber.self
-////
-////        let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
-////        print(Id)
-//        let predict = userpass.self = 1
-//        Amplify.API.query(request: .get(Users.self , byId: Id)) { result in
-//            switch result {
-//            case .success(let response):
-//                switch response {
-//                case .success(let data):
-//                    print(data as Any)
-//
-////                    if let todoJSON = data.value(at: "getTodo"),
-//                      if let todoData = try? JSONEncoder().encode(data),
-//                        var todo = try? JSONDecoder().decode(Users.self, from: todoData) {
-//                        print(todo)
-//                        todo.password = "12345678Aa*"
-//                        var user = Users()
-//                        user = todo
-//
-////                        Amplify.API.mutate(request: . update(user , where : predict)) { event in
-////                                               switch event {
-////                                               case .success(let result):
-////                                                   switch result {
-////                                                   case .success(let newTodo):
-////
-////                                                       print("the new todo description is \(newTodo.password ?? "")")
-////                                                    print(newTodo as Any)
-////
-////                                                   case .failure(let graphQLError):
-////                                                       print("Failed to create graphql \(graphQLError)")
-////                                                   }
-////                                               case .failure(let apiError):
-////                                                   print("Failed to create a todo", apiError)
-////                                               }
-////                                           }
-//
-//                    }
-////                    if let postJSON = data.value(at: "getPost"),
-////                        let postData = try? JSONEncoder().encode(postJSON),
-////                        let post = try? JSONDecoder().decode(Post.self, from: postData) {
-////                        print(post)
-////                    }
-//                case .failure(let errorResponse):
-//                    print("Response contained errors: \(errorResponse)")
-//                }
-//            case .failure(let apiError):
-//                print("Failed with error: \(apiError)")
-//            }
-//        }
-        
-        
-        
-        
-       // var userpass = AmplifyVersionNumber.self
+
 
         let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
         print(Id)
-//        Amplify.DataStore.query(Users.self) {_ in
-//
-//        }
-       
-       // let predict = userpass.self = 1
+
         let amplifyre =  Amplify.API.query(request: .get(Users.self, byId: Id))
         { event in
             switch event {
@@ -437,14 +372,7 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
                 switch result {
                 case .success(var user):
                     print("retrieved the user of description \(user as Any)")
-                   // todoFound = Users()
-
-                 //   var users = user?.password
-                   // users = "Qwerty999*"
-                   // self.Userd = user!.self
-
-                   // var us = Userd(pass: "Qwerty90*")
-                  //  us.password =
+                 
                     user?.password = "12345678Aa%"
 
 
@@ -455,21 +383,6 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
                     self.toggleComplete(user!)
 
 
-//                    Amplify.API.mutate(request: . update(user!)) { event in
-//                        switch event {
-//                        case .success(let result):
-//                            switch result {
-//                            case .success(let newTodo):
-//
-//                                print("the new todo description is \(newTodo.password ?? "")")
-//
-//                            case .failure(let graphQLError):
-//                                print("Failed to create graphql \(graphQLError)")
-//                            }
-//                        case .failure(let apiError):
-//                            print("Failed to create a todo", apiError)
-//                        }
-//                    }
 
                 case .failure(let error):
                     print("Got failed result with \(error.errorDescription)")

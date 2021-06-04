@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,8 +58,8 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0MJ-yh-gCY">
-                    <rect key="frame" x="0.0" y="210" width="414" height="686"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="8" y="210" width="398" height="686"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cii-rZ-hT2">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -136,14 +138,14 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="InputBox"/>
             <constraints>
                 <constraint firstItem="4qy-x4-0XD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.21" id="0E3-Cn-Kn9"/>
                 <constraint firstItem="pcz-ga-jlk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5EU-XW-TTI"/>
                 <constraint firstItem="4qy-x4-0XD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="5uW-ue-8jY"/>
                 <constraint firstItem="pcz-ga-jlk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="A3V-Hi-YdE"/>
                 <constraint firstItem="0MJ-yh-gCY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9sT-FO-qEh" secondAttribute="bottom" constant="20" id="FZu-kL-FGi"/>
-                <constraint firstItem="0MJ-yh-gCY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TVy-gB-cI7"/>
+                <constraint firstItem="0MJ-yh-gCY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="TVy-gB-cI7"/>
                 <constraint firstItem="4qy-x4-0XD" firstAttribute="top" secondItem="pcz-ga-jlk" secondAttribute="bottom" constant="15" id="UMQ-Tr-jHY"/>
                 <constraint firstItem="pcz-ga-jlk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VK8-IA-NYe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9sT-FO-qEh" secondAttribute="trailing" constant="20" id="W1m-Kh-M88"/>
@@ -151,7 +153,7 @@
                 <constraint firstItem="9sT-FO-qEh" firstAttribute="top" secondItem="pcz-ga-jlk" secondAttribute="bottom" constant="15" id="i0d-my-myX"/>
                 <constraint firstItem="0MJ-yh-gCY" firstAttribute="top" secondItem="4qy-x4-0XD" secondAttribute="bottom" constant="20" id="iII-mh-vvK"/>
                 <constraint firstItem="9sT-FO-qEh" firstAttribute="leading" secondItem="4qy-x4-0XD" secondAttribute="trailing" constant="8" id="lHl-n2-S6n"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0MJ-yh-gCY" secondAttribute="trailing" id="qvP-KZ-Nhh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0MJ-yh-gCY" secondAttribute="trailing" constant="8" id="qvP-KZ-Nhh"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
         </view>
@@ -161,6 +163,9 @@
         <image name="logo" width="750" height="601"/>
         <image name="menu_icon" width="77" height="64"/>
         <image name="search_icon" width="68" height="68"/>
+        <namedColor name="InputBox">
+            <color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

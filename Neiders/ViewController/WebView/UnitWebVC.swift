@@ -16,6 +16,7 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
     
     
     var urlstr:String? = ""
+    var contentType:String? = ""
     var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +66,12 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
     }
     
     @IBAction func buttonDownload(_ sender: Any) {
-        downloadFile()
-        
-        //downloadVideoLinkAndCreateAsset("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+        if (contentType == "Video") {
+            downloadVideoLinkAndCreateAsset(urlstr ?? "")
+        }else {
+            downloadFile()
+        }
+       
     }
     
         func downloadFile(){
@@ -205,9 +209,16 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
                                 PHPhotoLibrary.shared().performChanges({
                                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: destinationURL)}) { completed, error in
                                         if completed {
-                                            print("Video asset created")
+                                            DispatchQueue.main.async {
+                                                self.showAlertWith(message: "Download Completed")
+                                                print("Video asset created")
+                                            }
+                                           
                                         } else {
-                                            print(error)
+                                            print(error ?? "")
+                                            DispatchQueue.main.async {
+                                            self.showAlertWith(message: "Unable to download")
+                                            }
                                         }
                                 }
                             }
@@ -218,7 +229,10 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
                 }.resume()
 
             } else {
+                DispatchQueue.main.async {
                 print("File already exists at destination url")
+                self.showAlertWith(message: "Download Completed")
+                }
             }
 
         }

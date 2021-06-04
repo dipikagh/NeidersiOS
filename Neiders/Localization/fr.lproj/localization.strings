@@ -62,3 +62,10 @@
 "Old Password field can not be blank" = "Le champ de l'ancien mot de passe ne peut pas être vide";
 "New Password field can not be blank" = "Le champ Nouveau mot de passe ne peut pas être vide";
 "Confirm New Password field can not be blank" = "Le champ Confirmer le nouveau mot de passe ne peut pas être vide";
+"Email does not exit" = "L'e-mail ne se ferme pas";
+"RESEND OTP" = "RENVOYER OTP";
+"Time left" = "Temps restant";
+"Please enter registered email address" = "Veuillez saisir l'adresse e-mail enregistrée";
+"Please enter 4 digit Otp" = "Veuillez saisir 4 chiffres OTP";
+"Please signin to continue" = "Veuillez vous connecter pour continuer";
+"English is already selected" = "Le français est déjà sélectionné";

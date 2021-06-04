@@ -82,16 +82,19 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
         //tblSidePanel.reloadData()
         lblHello.text = "Hello".localized()
         arrDefaultContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
-        guard let username = UserDefaults.standard.string(forKey: "NAME") else {
-            return
+        if let username = UserDefaults.standard.string(forKey: "NAME") {
+            lblUserName.text = username
         }
-        guard let email = UserDefaults.standard.string(forKey: "EMAIL") else {
-            return
+        if let email = UserDefaults.standard.string(forKey: "EMAIL")  {
+            lblUserEmail.text = email
+        }
+        if let userType = UserDefaults.standard.string(forKey: "LOGINTYPE")  {
+            lblUserName2.text = userType
         }
        
-        lblUserName.text = username
-       // lblUserName2.text = username
-        lblUserEmail.text = email
+        
+       
+       
         SidePanelViewController.default.reloadMenu(for: .new)
     }
     

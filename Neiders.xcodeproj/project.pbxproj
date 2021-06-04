@@ -74,7 +74,6 @@
 		73869B2B264D30C100318086 /* CourseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73869B2A264D30C100318086 /* CourseDetailsViewModel.swift */; };
 		738E0C80265E828500087D2D /* UnitWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E0C7E265E828500087D2D /* UnitWebVC.swift */; };
 		738E0C81265E828500087D2D /* UnitWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738E0C7F265E828500087D2D /* UnitWebVC.xib */; };
-		738E0C85265E965200087D2D /* VerifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E0C84265E965100087D2D /* VerifyAPI.swift */; };
 		73A29B292652B09200DE604D /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A29B282652B09200DE604D /* NSBundle+Language.m */; };
 		73A94FA826320FF70004B84E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A94FA626320FF70004B84E /* HomeVC.swift */; };
 		73A94FA926320FF70004B84E /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A94FA726320FF70004B84E /* HomeVC.xib */; };
@@ -85,6 +84,7 @@
 		73C1F500264285280074781B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 73C1F4FD264285280074781B /* awsconfiguration.json */; };
 		73C1F501264285280074781B /* amplifytools.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 73C1F4FE264285280074781B /* amplifytools.xcconfig */; };
 		73CFC9B1265FD36200D3931D /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73CFC9B0265FD36200D3931D /* Config.plist */; };
+		73DB06732666335C00F5DDD9 /* ViewModelForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB06722666335C00F5DDD9 /* ViewModelForgotPassword.swift */; };
 		73F6F9112642C6C500174E68 /* SignUPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6F9102642C6C500174E68 /* SignUPViewModel.swift */; };
 		75145AB9675341FF8EC34A5D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96441185D4D74C9789D92204 /* Users.swift */; };
 		9FB5A07007BF4F0ABB9EA05D /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13E02628804EF584C0BAA9 /* AmplifyModels.swift */; };
@@ -176,7 +176,6 @@
 		73869B2A264D30C100318086 /* CourseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsViewModel.swift; sourceTree = "<group>"; };
 		738E0C7E265E828500087D2D /* UnitWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitWebVC.swift; sourceTree = "<group>"; };
 		738E0C7F265E828500087D2D /* UnitWebVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitWebVC.xib; sourceTree = "<group>"; };
-		738E0C84265E965100087D2D /* VerifyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyAPI.swift; sourceTree = "<group>"; };
 		73A29B232652AE8500DE604D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		73A29B272652B09200DE604D /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
 		73A29B282652B09200DE604D /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -191,6 +190,7 @@
 		73C1F4FE264285280074781B /* amplifytools.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = amplifytools.xcconfig; sourceTree = SOURCE_ROOT; };
 		73CFC9B0265FD36200D3931D /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		73D25B2B264BEEB7002B83B5 /* Neiders.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Neiders.entitlements; sourceTree = "<group>"; };
+		73DB06722666335C00F5DDD9 /* ViewModelForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelForgotPassword.swift; sourceTree = "<group>"; };
 		73F6F9102642C6C500174E68 /* SignUPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewModel.swift; sourceTree = "<group>"; };
 		852598D90A00402FBF17680E /* Contents.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Contents.swift; path = amplify/generated/models/Contents.swift; sourceTree = "<group>"; };
 		96441185D4D74C9789D92204 /* Users.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Users.swift; path = amplify/generated/models/Users.swift; sourceTree = "<group>"; };
@@ -323,6 +323,7 @@
 				73B7A148264A7EE90040FCCD /* FilterViewModel.swift */,
 				73869B2A264D30C100318086 /* CourseDetailsViewModel.swift */,
 				736F060E26601FD7004F5A13 /* EditPasswordViewModel.swift */,
+				73DB06722666335C00F5DDD9 /* ViewModelForgotPassword.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -365,7 +366,6 @@
 		73139C9F26309E40000E6126 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				738E0C84265E965100087D2D /* VerifyAPI.swift */,
 				73139CA026309E40000E6126 /* Constants.swift */,
 				73139CA426309E40000E6126 /* CustomExtensions.swift */,
 				73631A3C2643C1B500E3D036 /* ResultType.swift */,
@@ -692,6 +692,7 @@
 				73139CD926309E40000E6126 /* AlertDisplayer.swift in Sources */,
 				73139CD426309E40000E6126 /* SVIndefiniteAnimatedView.m in Sources */,
 				73631A5F2644175900E3D036 /* loginViewModel.swift in Sources */,
+				73DB06732666335C00F5DDD9 /* ViewModelForgotPassword.swift in Sources */,
 				737AE3EF26306FC900D9C6B1 /* SubmitTableViewCell.swift in Sources */,
 				737AE3EA26306C6900D9C6B1 /* UserTypeTableCell.swift in Sources */,
 				733B28572644632700580CC5 /* HomeViewModel.swift in Sources */,
@@ -702,7 +703,6 @@
 				73139CDD26309E40000E6126 /* ViewModel.swift in Sources */,
 				7306FDAD262EC62A0096B12A /* LogInVC.swift in Sources */,
 				730B58F42632CFA000EC836A /* SidePanelModel.swift in Sources */,
-				738E0C85265E965200087D2D /* VerifyAPI.swift in Sources */,
 				73869B2B264D30C100318086 /* CourseDetailsViewModel.swift in Sources */,
 				73A94FAD263212D40004B84E /* CourseCollectionCell.swift in Sources */,
 				737AE3E5263069C100D9C6B1 /* InputTableViewCell.swift in Sources */,
@@ -881,6 +881,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = S7J8S78RGZ;
 				INFOPLIST_FILE = Neiders/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -905,6 +906,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = S7J8S78RGZ;
 				INFOPLIST_FILE = Neiders/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

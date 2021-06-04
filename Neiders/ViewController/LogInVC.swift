@@ -11,6 +11,7 @@ import AmplifyPlugins
 import FBSDKLoginKit
 import FBSDKCoreKit
 
+
 class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     
     
@@ -160,9 +161,12 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     
 
     @IBAction func btnForgotPassword(_ sender: Any) {
-        let forgotPassVC = ForgotPasswordVC(nibName: "ForgotPasswordVC", bundle: nil)
-        forgotPassVC.isComingFromloginVC = true
-        self.navigationController?.pushViewController(forgotPassVC, animated: true)
+        if textInputEmail.text == "" {
+            showAlertWith(message: "Please enter registered email address".localized())
+        }else {
+            callforgotPass()
+        }
+       
     }
     @IBAction func btnSignUp(_ sender: Any) {
        
@@ -172,14 +176,15 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     
     
     @IBAction func btnFacebook(_ sender: Any) {
+        getFBUserData()
         
-        let loginManager = LoginManager()
-        loginManager.logIn(
-            permissions: [.publicProfile,.email],
-            viewController: self
-        ) { result in
-            self.loginManagerDidComplete(result)
-        }
+//        let loginManager = LoginManager()
+//        loginManager.logIn(
+//            permissions: [.publicProfile,.email],
+//            viewController: self
+//        ) { result in
+//            self.loginManagerDidComplete(result)
+//        }
     }
     
     @IBAction func btnLogin(_ sender: Any) {
@@ -202,6 +207,39 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                   
                         let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
                         self.navigationController?.pushViewController(homeVC, animated: true)
+                    }
+                    
+              
+            case .failure(let error):
+                hideActivityIndicator()
+                self.showAlertWith(message: error.localizedDescription)
+                
+            }
+            }
+        })
+
+        
+    }
+    
+    func callforgotPass(){
+        DispatchQueue.main.async {
+            showActivityIndicator(viewController: self)
+        }
+        viewModelLogin?.callForgotApi(email: arrCointainer[0], completion: {(result) in
+            DispatchQueue.main.async {
+            switch result {
+           
+            case .success(let result):
+                hideActivityIndicator()
+         
+                if let user = result as? Users {
+                  
+                    let forgotPassVC = ForgotPasswordVC(nibName: "ForgotPasswordVC", bundle: nil)
+                    forgotPassVC.isComingFromloginVC = true
+                    forgotPassVC.phoneNumber = user.phone ?? ""
+                    forgotPassVC.userId = user.id
+                    
+                    self.navigationController?.pushViewController(forgotPassVC, animated: true)
                     }
                     
               
@@ -241,9 +279,58 @@ extension LogInVC{
     
     func getFBUserData(){
 //
-       
+        let loginManager = LoginManager()
+          //  UIApplication.shared.statusBarStyle = .default  // remove this line if not required
+        loginManager.logIn(permissions: [ .publicProfile,.email ], viewController: self) { loginResult in
+                print(loginResult)
+
+                //use picture.type(large) for large size profile picture
+            _ = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                    if (error == nil){
+                        //everything works print the user data
+                        print("Result111:\(String(describing: result)) "as Any)
+                    }
+                    let dict = result as? NSDictionary
+                    print("FB Email1st:\(String(describing: dict))")
+    //                var fbId = ""
+    //                var fbFName = ""
+    //                var fbLName = ""
+    //                var fbEmail = ""
+    //                var fbName  = ""
+                    if let id = dict?["id"] as? String{
+                        self.fbId = id
+                    }
+                    if let fname = dict?["first_name"] as? String{
+                        self.fbFName = fname
+                    }
+                    if let lname = dict?["last_name"] as? String{
+                        self.fbLName = lname
+                    }
+                    if let fName = dict?["name"] as? String {
+                        self.fbName = fName
+                    }
+                    if let Email = dict?["email"] as? String{
+                        self.fbEmail = Email
+                    }
+                    var getPhone = ""
+                    if let phone = dict?["phone"] as? String {
+                        getPhone = phone
+                    }
+                    //get user picture url from dictionary
+    //                if let  fbPickUrl = (((dict?["picture"] as? [String: Any])?["data"] as? [String:Any])?["url"] as? String){
+    //                self.downloadImage(with: fbPickUrl) {
+    //
+    //                }
+    //                }
+                    print("FB ID: \(self.fbId)\n FB Email:\(self.fbEmail) \n FbFName:\(self.fbName) \n fbLName:\(self.fbLName) \n \(getPhone)")
+                    ////CALL API BY LOGIN WITH FB
+                 
+                    self.callSignup(strFullName:self.fbName,strEmail:self.fbEmail )
+                    
+                })
+            }
         
-        if((AccessToken.current) != nil){
+      /*  if((AccessToken.current) != nil){
             GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     //everything works print the user data
@@ -288,7 +375,7 @@ extension LogInVC{
                 
             })
             
-        }
+        } */
         
     }
     

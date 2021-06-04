@@ -188,7 +188,7 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
                }
         
          
-        cell.lblCourseName.text =  "\(viewModelHome?.arrayContentList[indexPath.row].title ?? "") \n\(viewModelHome?.arrayContentList[indexPath.row].subject ?? "")"
+        cell.lblCourseName.text =  "\(viewModelHome?.arrayContentList[indexPath.row].title ?? "")"
          return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

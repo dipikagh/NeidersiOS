@@ -46,11 +46,13 @@ class loginViewModel: loginViewModelProtocol {
             case .success(let result):
                 switch result {
                 case .success(let user):
-                    print("Successfully retrieved list of todos: \(user.count)")
+                    print("Successfully retrieved list of todos: \(user[0])")
                     if (user.count == 1) {
                         UserDefaults.standard.setValue(user[0].email, forKey: "EMAIL")
                         UserDefaults.standard.setValue(user[0].full_name, forKey: "NAME")
                         UserDefaults.standard.setValue(user[0].id, forKey: "ID")
+                        UserDefaults.standard.setValue(user[0].login_type, forKey: "LOGINTYPE")
+                        
                         completion(.success(true))
                     }else if (user.count == 0) {
                         completion(.failure(NeidersError.customMessage("Wrong credential! \nPlease check your Email or Password".localized())))
@@ -132,7 +134,10 @@ class loginViewModel: loginViewModelProtocol {
                             
                             }
                         })
-                    }else {
+                    }else if (user.count == 0){
+                        completion(.failure(NeidersError.customMessage("Please signin to continue".localized())))
+                    }
+                    else {
                         self.callSingleSignup(fullName: fullName, email: email,  completion: {(result) in
                             switch result {
                             case .success(let value):
@@ -175,12 +180,70 @@ class loginViewModel: loginViewModelProtocol {
                 case .success(let user):
                     print("Successfully retrieved list of todos: \(user[0])")
                     if (user.count == 1) {
-                        UserDefaults.standard.setValue(user[0].email, forKey: "EMAIL")
-                        UserDefaults.standard.setValue(user[0].full_name, forKey: "NAME")
+                        if let email = user[0].email {
+                        UserDefaults.standard.setValue(email, forKey: "EMAIL")
+                        }
+                        if let name = user[0].full_name {
+                        UserDefaults.standard.setValue(name, forKey: "NAME")
+                        }
+                        if  user[0].id != "" {
                         UserDefaults.standard.setValue(user[0].id, forKey: "ID")
+                        }
                         completion(.success(true))
                     }else if (user.count == 0) {
                         completion(.failure(NeidersError.customMessage("Wrong credential! \nPlease check your Email or Password".localized())))
+                    }else {
+                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+                    }
+                case .failure(let error):
+                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+
+                    print("Got failed result with \(error.errorDescription)")
+                }
+            case .failure(let error):
+                completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+
+                print("Got failed event with error \(error)")
+            }
+        }
+ 
+    }
+    
+    //MARK:- API For Forgot PAssword, First Fetch data for perticular usee
+    func callForgotApi(email:String?, completion:@escaping (NeidersResult<Any?>) -> Void){
+        
+        
+        guard let email = email, email.trimmed.count > 0 else {
+            completion(.failure(NeidersError.customMessage("please enter your email address".localized())))
+            return
+        }
+        guard email.isValidEmail() else {
+            completion(.failure(NeidersError.customMessage("please enter your proper email address".localized())))
+            return
+        }
+     
+//        guard password.isValidPassword() else {
+//            completion(.failure(NeidersError.customMessage("Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols")))
+//            return
+//        }
+       
+        
+        let user = Users.keys
+        let predicate = user.email == email
+        Amplify.API.query(request: .paginatedList(Users.self, where: predicate, limit: 1000)) { event in
+            switch event {
+            case .success(let result):
+                switch result {
+                case .success(let user):
+                    print("Successfully retrieved list of todos: \(user.count)")
+                    if (user.count == 1) {
+
+                        if let success = user[0] as? Users {
+                            completion(.success(success))
+                        }
+                     
+                    }else if (user.count == 0) {
+                        completion(.failure(NeidersError.customMessage("Email does not exit".localized())))
                     }else {
                         completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
                     }
@@ -200,5 +263,6 @@ class loginViewModel: loginViewModelProtocol {
         
 
     }
+    
     
 }
