@@ -13,6 +13,8 @@ class InputTableViewCell: UITableViewCell {
     @IBOutlet weak var btnShowPassword: UIButton!
     @IBOutlet weak var imageInputType: UIImageView!
     
+    @IBOutlet weak var lblPasswordDeclaration: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

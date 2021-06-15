@@ -69,3 +69,5 @@
 "Please enter 4 digit Otp" = "Veuillez saisir 4 chiffres OTP";
 "Please signin to continue" = "Veuillez vous connecter pour continuer";
 "English is already selected" = "Le français est déjà sélectionné";
+"Your mobile number verification is successful" = "La vérification de votre numéro de mobile est réussie";
+"Password field can not be blank" = "Le champ du mot de passe ne peut pas être vide";

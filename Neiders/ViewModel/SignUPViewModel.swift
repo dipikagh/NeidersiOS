@@ -18,7 +18,7 @@ class SignupViewModel: SignupViewModelProtocol {
     var arrayInputField = [["Full Name".localized(),"user_icon"], ["Email Id".localized(),"email_icon"],["Password".localized(),"password_icon"],["Phone Number".localized(),"mobile_icon"]]
     //Checking If User Exist
     func callSignup(fullName:String?,email:String?,phone:String?,password:String?,loginType:String?, completion:@escaping (NeidersResult<Any?>) -> Void){
-        
+        if (Reachability.isConnectedToNetwork()){
         guard let fullName = fullName, fullName.trimmed.count > 0 else {
             completion(.failure(NeidersError.customMessage("Please enter your full name".localized())))
             return
@@ -71,26 +71,29 @@ class SignupViewModel: SignupViewModelProtocol {
                                 }
                             case .failure(let error):
                                 completion(.failure(NeidersError.customMessage(error.localizedDescription)))
-                              
-                            
+                                
+                                
                             }
                         })
                     }
                 case .failure(let error):
                     completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-
+                    
                     print("Got failed result with \(error.errorDescription)")
                 }
             case .failure(let error):
                 completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-
+                
                 print("Got failed event with error \(error)")
             }
         }
- 
-
+        }else {
+            completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
+        }
         
-
+        
+        
+        
     }
     
     
@@ -98,24 +101,24 @@ class SignupViewModel: SignupViewModelProtocol {
         let user = Users(login_type:loginType, full_name: fullName, email: email,phone: phone, password: password)
         // 3
         _ = Amplify.API.mutate(request: .create(user)) { event in
-          switch event {
-          // 4
-          case .failure(let error):
-            completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-            print("Got failed result with \(error.errorDescription)")
-          case .success(let result):
-            switch result {
-            
+            switch event {
+            // 4
             case .failure(let error):
                 completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
                 print("Got failed result with \(error.errorDescription)")
-            case .success(let user):
-                completion(.success(user))
-                print("Successfully created todo: \(user)")
-              // 5
-             
+            case .success(let result):
+                switch result {
+                
+                case .failure(let error):
+                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+                    print("Got failed result with \(error.errorDescription)")
+                case .success(let user):
+                    completion(.success(user))
+                    print("Successfully created todo: \(user)")
+                // 5
+                
+                }
             }
-          }
         }
     }
     

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class HomeVC: UIViewController,AlertDisplayer {
-
+    
     @IBOutlet weak var collectionViewCourse: UICollectionView!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -30,7 +30,7 @@ class HomeVC: UIViewController,AlertDisplayer {
     var arrCouseDetails = [["ENVIRONMENT","box1"],["SCIENCE & TECHNOLOGY","box2"],["POLITY","box3"],["PHYSICAL GEOGRAPHY","box4"],["MODERN HISTORY","box5"],["COMPUTER SCIENCE","box6"]]
     
     func setupUI(){
-    
+        
         viewHeader.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.gray, radius: 3.0, opacity: 0.6)
         viewFilter.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.gray, radius: 3.0, opacity: 0.6)
         shadowSearchView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.gray, radius: 3.0, opacity: 0.6)
@@ -45,21 +45,21 @@ class HomeVC: UIViewController,AlertDisplayer {
         SidePanelViewController.default.delegate = self
         SidePanelViewController.default.isloggedin = true
         viewModelHome = HomeViewModel()
-        callContentList()
+        
         txtSearch.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         
-  }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-     
-//            if let lang = UserDefaults.standard.value(forKey: "LANG") {
-//                if lang as? String == "ENG" {
-//                    Bundle.setLanguage("en")
-//                }else {
-//                    Bundle.setLanguage("fr")
-//                }
-//            }
+        super.viewWillAppear(animated)
+        
+        //            if let lang = UserDefaults.standard.value(forKey: "LANG") {
+        //                if lang as? String == "ENG" {
+        //                    Bundle.setLanguage("en")
+        //                }else {
+        //                    Bundle.setLanguage("fr")
+        //                }
+        //            }
         languageSet()
         if (isFromFilter == true){
             if  self.viewModelHome?.arrayContentList.count == 0{
@@ -68,10 +68,11 @@ class HomeVC: UIViewController,AlertDisplayer {
             collectionViewCourse.reloadData()
         }else {
             self.viewModelHome?.arrayContentList = viewModelHome?.dataService ?? []
-           // callContentList()
+            // callContentList()
         }
+        callContentList()
         collectionViewCourse.reloadData()
-      
+        
         
     }
     func languageSet () {
@@ -97,25 +98,25 @@ class HomeVC: UIViewController,AlertDisplayer {
         }
         viewModelHome?.callContentList(completion: {(result) in
             DispatchQueue.main.async {
-            switch result{
-            case .success(let result):
-//            DispatchQueue.main.async {
-                
-                hideActivityIndicator()
-                if let success = result as? Bool , success == true {
-                self.collectionViewCourse.reloadData()
-                }else {
-                    self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+                switch result{
+                case .success(let result):
+                    //            DispatchQueue.main.async {
+                    
+                    hideActivityIndicator()
+                    if let success = result as? Bool , success == true {
+                        self.collectionViewCourse.reloadData()
+                    }else {
+                        self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+                    }
+                // }
+                case .failure(let error):
+                    hideActivityIndicator()
+                    self.showAlertWith(message: error.localizedDescription)
                 }
-           // }
-            case .failure(let error):
-                hideActivityIndicator()
-            self.showAlertWith(message: error.localizedDescription)
-            }
             }
         })
     }
-
+    
     @IBAction func btnMenu(_ sender: UIButton) {
         
         if sender.isSelected {
@@ -140,7 +141,7 @@ extension HomeVC:SidePanelDelegate {
             let VC = LanguageVC(nibName: "LanguageVC", bundle: nil)
             VC.modalPresentationStyle = .overCurrentContext
             VC.delegate = self
-           self.navigationController?.present(VC, animated: true, completion: nil)
+            self.navigationController?.present(VC, animated: true, completion: nil)
         }
     }
     
@@ -151,7 +152,7 @@ extension HomeVC:SidePanelDelegate {
         }
     }
     
-  
+    
     
     
 }
@@ -174,28 +175,29 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CourseCollectionCell.self), for: indexPath) as! CourseCollectionCell
         let imgurl = (viewModelHome?.arrayContentList[indexPath.row].content_url ?? "").components(separatedBy: "?")
         _ = URL(string: imgurl[0])
-      
-        if let imagUrl = URL(string: imgurl[0]){
-                   KingfisherManager.shared.retrieveImage(with: imagUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                       
-                       cell.imageCourse.image = image
-                       
-                   })
-               }
         
-         
+        if let imagUrl = URL(string: imgurl[0]){
+            KingfisherManager.shared.retrieveImage(with: imagUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
+                
+                cell.imageCourse.image = image
+                
+            })
+        }
+        
+        
         cell.lblCourseName.text =  "\(viewModelHome?.arrayContentList[indexPath.row].title ?? "")"
-         return cell
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let coursedetailsVC = CourseDetailsVC(nibName: "CourseDetailsVC", bundle: nil)
         coursedetailsVC.courseId = viewModelHome?.arrayContentList[indexPath.row].id ?? ""
         coursedetailsVC.imageUrl = viewModelHome?.arrayContentList[indexPath.row].content_url ?? ""
         coursedetailsVC.courseDetails = "\(viewModelHome?.arrayContentList[indexPath.row].title ?? "") \n\(viewModelHome?.arrayContentList[indexPath.row].subject ?? "")"
+        coursedetailsVC.organizationName = viewModelHome?.arrayContentList[indexPath.row].organization_name ?? ""
         self.navigationController?.pushViewController(coursedetailsVC, animated: true)
     }
 }
@@ -203,31 +205,31 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
 extension HomeVC:UITextFieldDelegate{
     @objc func textFieldValueChange(_ txt: UITextField)  {
         searchItem = txt.text!
-
+        
         if (searchItem != ""){
-
+            
             viewModelHome?.searchLocString = searchItem
             viewModelHome?.getSearchLocation(completion: { (result) in
                 switch result {
                 case .success(let result):
                     if let success = result as? Bool , success == true {
                         DispatchQueue.main.async {
-                           // self.tableSearchLocation.reloadData()
+                            // self.tableSearchLocation.reloadData()
                         }
-
+                        
                     }
                 case .failure( _): break
-
-
+                    
+                    
                 }
             })
-
+            
         }else {
             self.viewModelHome?.arrayContentList = viewModelHome?.dataService ?? []
-
+            
         }
         self.collectionViewCourse.reloadData()
-     }
+    }
     
 }
 

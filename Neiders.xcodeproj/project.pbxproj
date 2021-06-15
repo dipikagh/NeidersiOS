@@ -29,11 +29,6 @@
 		730B58FA2632E2E200EC836A /* LanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730B58F82632E2E200EC836A /* LanguageVC.xib */; };
 		73139CC526309E40000E6126 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73139CA026309E40000E6126 /* Constants.swift */; };
 		73139CC826309E40000E6126 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73139CA426309E40000E6126 /* CustomExtensions.swift */; };
-		73139CD126309E40000E6126 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73139CB026309E40000E6126 /* SVRadialGradientLayer.m */; };
-		73139CD226309E40000E6126 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73139CB326309E40000E6126 /* SVProgressAnimatedView.m */; };
-		73139CD326309E40000E6126 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 73139CB526309E40000E6126 /* SVProgressHUD.m */; };
-		73139CD426309E40000E6126 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73139CB626309E40000E6126 /* SVIndefiniteAnimatedView.m */; };
-		73139CD526309E40000E6126 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73139CB726309E40000E6126 /* SVProgressHUD.bundle */; };
 		73139CD626309E40000E6126 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73139CB926309E40000E6126 /* InternetStatus.swift */; };
 		73139CD726309E40000E6126 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73139CBA26309E40000E6126 /* RNCryptor.swift */; };
 		73139CD826309E40000E6126 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73139CBB26309E40000E6126 /* Routing.swift */; };
@@ -126,15 +121,6 @@
 		730B58F82632E2E200EC836A /* LanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageVC.xib; sourceTree = "<group>"; };
 		73139CA026309E40000E6126 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73139CA426309E40000E6126 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
-		73139CB026309E40000E6126 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		73139CB126309E40000E6126 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		73139CB226309E40000E6126 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		73139CB326309E40000E6126 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
-		73139CB426309E40000E6126 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		73139CB526309E40000E6126 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		73139CB626309E40000E6126 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		73139CB726309E40000E6126 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		73139CB826309E40000E6126 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		73139CB926309E40000E6126 /* InternetStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
 		73139CBA26309E40000E6126 /* RNCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
 		73139CBB26309E40000E6126 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
@@ -369,7 +355,6 @@
 				73139CA026309E40000E6126 /* Constants.swift */,
 				73139CA426309E40000E6126 /* CustomExtensions.swift */,
 				73631A3C2643C1B500E3D036 /* ResultType.swift */,
-				73139CAF26309E40000E6126 /* SVProgressHUD */,
 				73139CB926309E40000E6126 /* InternetStatus.swift */,
 				73139CBA26309E40000E6126 /* RNCryptor.swift */,
 				73139CBB26309E40000E6126 /* Routing.swift */,
@@ -378,22 +363,6 @@
 				73139CBF26309E40000E6126 /* Protocols */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		73139CAF26309E40000E6126 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				73139CB026309E40000E6126 /* SVRadialGradientLayer.m */,
-				73139CB126309E40000E6126 /* SVIndefiniteAnimatedView.h */,
-				73139CB226309E40000E6126 /* SVProgressHUD.h */,
-				73139CB326309E40000E6126 /* SVProgressAnimatedView.m */,
-				73139CB426309E40000E6126 /* SVRadialGradientLayer.h */,
-				73139CB526309E40000E6126 /* SVProgressHUD.m */,
-				73139CB626309E40000E6126 /* SVIndefiniteAnimatedView.m */,
-				73139CB726309E40000E6126 /* SVProgressHUD.bundle */,
-				73139CB826309E40000E6126 /* SVProgressAnimatedView.h */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		73139CBF26309E40000E6126 /* Protocols */ = {
@@ -576,7 +545,6 @@
 				73C1F501264285280074781B /* amplifytools.xcconfig in Resources */,
 				73139CF62630B165000E6126 /* ForgotPasswordVC.xib in Resources */,
 				7306FD9C262EBDBE0096B12A /* LaunchScreen.storyboard in Resources */,
-				73139CD526309E40000E6126 /* SVProgressHUD.bundle in Resources */,
 				7315D9992639830100548827 /* CourseDetailsVC.xib in Resources */,
 				7371BC972637081C00973EAD /* FilterCell.xib in Resources */,
 				73A94FA926320FF70004B84E /* HomeVC.xib in Resources */,
@@ -684,20 +652,16 @@
 				730B58EC2632CE8C00EC836A /* SidePanelViewModel.swift in Sources */,
 				73139CD726309E40000E6126 /* RNCryptor.swift in Sources */,
 				730B58F92632E2E200EC836A /* LanguageVC.swift in Sources */,
-				73139CD126309E40000E6126 /* SVRadialGradientLayer.m in Sources */,
 				73139CDF26309E40000E6126 /* ModelConfigurable.swift in Sources */,
 				7306FD97262EBDBB0096B12A /* Neiders.xcdatamodeld in Sources */,
 				73139CF52630B165000E6126 /* ForgotPasswordVC.swift in Sources */,
-				73139CD326309E40000E6126 /* SVProgressHUD.m in Sources */,
 				73139CD926309E40000E6126 /* AlertDisplayer.swift in Sources */,
-				73139CD426309E40000E6126 /* SVIndefiniteAnimatedView.m in Sources */,
 				73631A5F2644175900E3D036 /* loginViewModel.swift in Sources */,
 				73DB06732666335C00F5DDD9 /* ViewModelForgotPassword.swift in Sources */,
 				737AE3EF26306FC900D9C6B1 /* SubmitTableViewCell.swift in Sources */,
 				737AE3EA26306C6900D9C6B1 /* UserTypeTableCell.swift in Sources */,
 				733B28572644632700580CC5 /* HomeViewModel.swift in Sources */,
 				7371BC962637081C00973EAD /* FilterCell.swift in Sources */,
-				73139CD226309E40000E6126 /* SVProgressAnimatedView.m in Sources */,
 				732FA33F263C42C70027F8D6 /* FilterOptionVC.swift in Sources */,
 				73631A3D2643C1B500E3D036 /* ResultType.swift in Sources */,
 				73139CDD26309E40000E6126 /* ViewModel.swift in Sources */,

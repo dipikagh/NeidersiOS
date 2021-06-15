@@ -28,6 +28,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     @IBOutlet weak var viewResendOtp: UIView!
     @IBOutlet weak var btnShowPassword: UIButton!
     
+    @IBOutlet weak var lblPasswordDescription: UILabel!
     var user:Users?
     
     
@@ -41,13 +42,13 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     var strcountryCode:String = ""
     var count = 60
     var phoneNumber:String?
-    var countryCode = "+91"
+    var countryCode = "+233"
     var userId:String?
     var isComingFromloginVC:Bool? = true
     var viewModelForgotPassword:ForgotPasswordViewModel?
     var iconClick = true
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModelForgotPassword = ForgotPasswordViewModel()
@@ -73,26 +74,30 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         btnResendOTP.isHidden = true
         setUPForgotPassword()
-       
+        
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ForgotPasswordVC.update), userInfo: nil, repeats: true)
         self.btnvalidate.isUserInteractionEnabled = true
         
-
+        lblPasswordDescription.text = "Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols".localized()
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     func setUPForgotPassword(){
         if isComingFromloginVC == true {
-          
+            
             if let phoneNumber = phoneNumber {
-            VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
-              
+                VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
+                
             }
             
         }else {
-           // viewResendOtp.isHidden = false
+            // viewResendOtp.isHidden = false
             if let phoneNumber = phoneNumber {
-            VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
-              
+                VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
+                
             }
         }
     }
@@ -100,7 +105,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
@@ -131,7 +136,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     @objc func update() {
         if(count > 0) {
             count = count - 1
-             self.btnResendOTP.isHidden = true
+            self.btnResendOTP.isHidden = true
             DispatchQueue.main.async {
                 self.lblOTPCount.text = "\("Time left".localized()) (\(self.count) sec)"
             }
@@ -142,14 +147,14 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
             self.btnvalidate.isHidden = true
         }
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
-       // self.navigationController?.popViewController(animated: true)
+        // self.navigationController?.popViewController(animated: true)
         callForgotPasswordApi()
     }
     
@@ -158,7 +163,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ForgotPasswordVC.update), userInfo: nil, repeats: true)
         self.clearOTP()
         if let phoneNumber = phoneNumber {
-        VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
+            VerifyAPI.sendVerificationCode(countryCode, phoneNumber)
             self.btnvalidate.isHidden = false
         }
     }
@@ -168,52 +173,60 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
                 if (phoneNumber == "") {
                     self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
                 }else {
-                callOTPApi(countryCode:self.countryCode,phoneNumber:self.phoneNumber ?? "")
+                    callOTPApi(countryCode:self.countryCode,phoneNumber:self.phoneNumber ?? "")
                 }
-           // self.navigationController?.popViewController(animated: true)
+                // self.navigationController?.popViewController(animated: true)
             }else {
                 showAlertWith(message: "Please enter 4 digit Otp".localized())
             }
         }else {
             if inputOTP.count == 4 {
-            
-            VerifyAPI.validateVerificationCode(self.countryCode, self.phoneNumber ?? "", inputOTP) { checked in
-                if (checked.success) {
-                    let resultMessage = checked.message
-                    print(resultMessage)
-                    if self.isComingFromloginVC ?? true{
-                        self.callForgotPasswordApi()
-                       // self.navigationController?.popViewController(animated: true)
-                    }else {
-                        let loginvc = LogInVC(nibName: "LogInVC", bundle: nil)
-                        self.navigationController?.pushViewController(loginvc, animated: true)
+                
+                VerifyAPI.validateVerificationCode(self.countryCode, self.phoneNumber ?? "", inputOTP) { checked in
+                    if (checked.success) {
+                        let resultMessage = checked.message
+                        print(resultMessage)
+                        if self.isComingFromloginVC ?? true{
+                            self.callForgotPasswordApi()
+                            // self.navigationController?.popViewController(animated: true)
+                        }else {
+                            
+                            let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                                let loginvc = LogInVC(nibName: "LogInVC", bundle: nil)
+                                self.navigationController?.pushViewController(loginvc, animated: true)
+                                
+                            }
+                            
+                            self.showAlertWith(message: "Your mobile number is verified  successfully".localized(), type: .custom(actions: [alertOkAction]))
+                            
+                           
+                        }
+                        
+                        //  self.performSegue(withIdentifier: "checkResultSegue", sender: nil)
+                    } else {
+                        // self.errorLabel.text = checked.message
+                        self.showAlertWith(message: "Wrong OTP! Please try again".localized())
+                        print(checked.message)
                     }
-                    
-                  //  self.performSegue(withIdentifier: "checkResultSegue", sender: nil)
-                } else {
-                   // self.errorLabel.text = checked.message
-                    self.showAlertWith(message: "Wrong OTP! Please try again".localized())
-                   print(checked.message)
                 }
+            }else {
+                showAlertWith(message: "Please enter 4 digit Otp".localized())
             }
-        }else {
-            showAlertWith(message: "Please enter 4 digit Otp".localized())
         }
-        }
-       // self.navigationController?.popViewController(animated: true)
+        // self.navigationController?.popViewController(animated: true)
     }
     
     deinit {
-    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-}
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @objc func keyboardWillShow( _ sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 150 points upward
+        self.view.frame.origin.y = -100 // Move view 150 points upward
     }
-
+    
     @objc func keyboardWillHide(_ sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+        self.view.frame.origin.y = 0 // Move view to original position
     }
     
     @IBAction func btnBack(_ sender: Any) {
@@ -222,15 +235,15 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     
     @IBAction func btnShowHidePassword(_ sender: Any) {
         if(iconClick == true) {
-           
+            
             textPassword.isSecureTextEntry = false
             btnShowPassword.setImage(UIImage(named: "invisible"), for: .normal)
-               } else {
-                textPassword.isSecureTextEntry = true
-               btnShowPassword.setImage(UIImage(named: "view"), for: .normal)
-               }
-
-               iconClick = !iconClick
+        } else {
+            textPassword.isSecureTextEntry = true
+            btnShowPassword.setImage(UIImage(named: "view"), for: .normal)
+        }
+        
+        iconClick = !iconClick
     }
     
     func clearOTP()  {
@@ -238,7 +251,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         self.textOTP2.text = ""
         self.textOTP3.text = ""
         self.textOTP4.text = ""
-   
+        
     }
     
     func callForgotPasswordApi(){
@@ -251,31 +264,35 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         }
         viewModelForgotPassword?.UPdate(strPassword: textPassword.text!, strid: userid, completion: { (result) in
             DispatchQueue.main.async {
-            switch result{
-            case .success(let result):
-//            DispatchQueue.main.async {
-                
-                hideActivityIndicator()
-                if let success = result as? Bool , success == true {
-                    let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        self.navigationController?.popViewController(animated: true)
-
+                switch result{
+                case .success(let result):
+                    //            DispatchQueue.main.async {
+                    let delay = 15
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+//                        self.activityIndicator.stopAnimating()
+//                        self.activityIndicator.isHidden = true
+                        hideActivityIndicator()
+               
+                    if let success = result as? Bool , success == true {
+                        let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                            self.navigationController?.popViewController(animated: true)
+                            
+                        }
+                        
+                        self.showAlertWith(message: "You have changed your password successfully".localized(), type: .custom(actions: [alertOkAction]))
+                    }else {
+                        self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
                     }
-
-                    self.showAlertWith(message: "You have changed your password successfully".localized(), type: .custom(actions: [alertOkAction]))
-                }else {
-                    self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+                 }
+                case .failure(let error):
+                    hideActivityIndicator()
+                    self.showAlertWith(message: error.localizedDescription)
                 }
-           // }
-            case .failure(let error):
-                hideActivityIndicator()
-            self.showAlertWith(message: error.localizedDescription)
-            }
             }
             
             
         })
-       // self.navigationController?.popViewController(animated: true)
+        // self.navigationController?.popViewController(animated: true)
     }
     
     func callOTPApi(countryCode:String,phoneNumber:String){
@@ -287,19 +304,20 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
                 self.timer?.invalidate()
                 self.timer = nil
                 self.viewResendOtp.isHidden = true
-               // self.clearOTP()
+                // self.clearOTP()
                 self.btnvalidate.isUserInteractionEnabled = false
-             
+                self.showAlertWith(message: "Your mobile number is verified  successfully".localized())
+//                print(checked.message)
                 
-              //  self.performSegue(withIdentifier: "checkResultSegue", sender: nil)
+                //  self.performSegue(withIdentifier: "checkResultSegue", sender: nil)
             } else {
-               // self.errorLabel.text = checked.message
+                // self.errorLabel.text = checked.message
                 self.showAlertWith(message: "Wrong OTP! Please try again".localized())
-               print(checked.message)
+                print(checked.message)
             }
         }
     }
-
+    
 }
 
 
@@ -324,7 +342,7 @@ extension ForgotPasswordVC : UITextFieldDelegate {
             case textOTP4:
                 str4 = textOTP4.text!
                 textOTP4.resignFirstResponder()
-
+                
                 
                 
             default:
@@ -348,7 +366,7 @@ extension ForgotPasswordVC : UITextFieldDelegate {
             case textOTP4:
                 str4 = textOTP4.text!
                 textOTP3.becomeFirstResponder()
-
+                
                 
             default:
                 break
@@ -358,77 +376,77 @@ extension ForgotPasswordVC : UITextFieldDelegate {
             
             if textField.tag == 0 {
                 if (textField.text! == ""){
-                str1 = textField.text!
+                    str1 = textField.text!
                 }
                 else {
-                textField.text! = ""
-                  str1 = textField.text!
+                    textField.text! = ""
+                    str1 = textField.text!
                 }
-               
+                
             }
             else if textField.tag == 1 {
                 if (textField.text! == ""){
-                str2 = textField.text!
-                }
-                else {
-                 textField.text! = ""
                     str2 = textField.text!
                 }
-               
+                else {
+                    textField.text! = ""
+                    str2 = textField.text!
+                }
+                
             }
             else if textField.tag == 2 {
                 if (textField.text! == ""){
-                str3 = textField.text!
+                    str3 = textField.text!
                 }
                 else {
-                  textField.text! = ""
+                    textField.text! = ""
                     str3 = textField.text!
                 }
                 
             }
             else if textField.tag == 3 {
                 if (textField.text! == ""){
-                str4 = textField.text!
-                }
-                else {
-                  textField.text! = ""
                     str4 = textField.text!
                 }
-               
+                else {
+                    textField.text! = ""
+                    str4 = textField.text!
+                }
+                
             }
-
-
+            
+            
             print("Already have value")
-
+            
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 0 {
-          str1 = textField.text!
+            str1 = textField.text!
         }
         else if textField.tag == 1 {
-           str2 = textField.text!
+            str2 = textField.text!
         }
         else if textField.tag == 2 {
             str3 = textField.text!
         }
         else if textField.tag == 3 {
-           str4 = textField.text!
+            str4 = textField.text!
         }
-
-       }
-     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         self.inputOTP = "\(str1)\(str2)\(str3)\(str4)"
         print(inputOTP)
-       
         
-       }
+        
+    }
     class func isString10Digits(ten_digits: String) -> Bool{
-
+        
         if !ten_digits.isEmpty {
-
+            
             let numberCharacters = NSCharacterSet.decimalDigits.inverted
             return !ten_digits.isEmpty && ten_digits.rangeOfCharacter(from: numberCharacters) == nil
         }

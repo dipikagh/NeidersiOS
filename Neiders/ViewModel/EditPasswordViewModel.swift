@@ -14,12 +14,15 @@ import AWSPluginsCore
 protocol EditPasswordViewModelProtocol:class {
     var arrayContainer:[String] {get set}
     func UPdate(completion:@escaping (NeidersResult<Any?>) -> Void)
-  
+    
 }
 class EditPasswordViewModel: EditPasswordViewModelProtocol {
     var arrayContainer: [String] = ["","",""]
     
     func UPdate(completion:@escaping (NeidersResult<Any?>) -> Void){
+        if (Reachability.isConnectedToNetwork()){
+            
+      
         let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
         print(Id)
         if arrayContainer[0] == "" {
@@ -40,50 +43,53 @@ class EditPasswordViewModel: EditPasswordViewModelProtocol {
             completion(.failure(NeidersError.customMessage("New password and confirm new password field does not matched".localized())))
         }
         else {
-        Amplify.API.query(request: .get(Users.self, byId: Id))
-        { event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(var user):
-                    print("retrieved the user of description \(user as Any)")
-                    if (user?.password == self.arrayContainer[0]){
-                        user?.password = self.arrayContainer[1]
-                        print( user?.password as Any)
-                  
-                        let updatedTodo = user
-                       
-                      
-                        
-                          Amplify.DataStore.save(updatedTodo!) { result in
-                          switch result {
-                          case .success(let savedTodo):
+            Amplify.API.query(request: .get(Users.self, byId: Id))
+            { event in
+                switch event {
+                case .success(let result):
+                    switch result {
+                    case .success(var user):
+                        print("retrieved the user of description \(user as Any)")
+                        if (user?.password == self.arrayContainer[0]){
+                            user?.password = self.arrayContainer[1]
+                            print( user?.password as Any)
                             
-                            print("Updated item: \(savedTodo as Any )")
-                              completion(.success(true))
-                          case .failure(let error):
-                              completion(.success(false))
-                            print("Could not update data with error: \(error)")
-                          }
+                            let updatedTodo = user
+                            
+                            
+                            
+                            Amplify.DataStore.save(updatedTodo!) { result in
+                                switch result {
+                                case .success(let savedTodo):
+                                    
+                                    print("Updated item: \(savedTodo as Any )")
+                                    completion(.success(true))
+                                case .failure(let error):
+                                    completion(.success(false))
+                                    print("Could not update data with error: \(error)")
+                                }
+                            }
+                            
+                        }else {
+                            completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
                         }
-
-                    }else {
-                        completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
+                        
+                        
+                    case .failure(let error):
+                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+                        print("Got failed result with \(error.errorDescription)")
                     }
-
-
                 case .failure(let error):
                     completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                    print("Got failed result with \(error.errorDescription)")
+                    print("Got failed event with error \(error)")
                 }
-            case .failure(let error):
-                completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                print("Got failed event with error \(error)")
             }
         }
+        }else {
+            completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
         }
         
-
+        
         
         
     }
@@ -91,17 +97,17 @@ class EditPasswordViewModel: EditPasswordViewModelProtocol {
     
     func toggleComplete(_ todo: Users,completion:@escaping (NeidersResult<Any?>) -> Void) {
         let updatedTodo = todo
-       
-      
-      Amplify.DataStore.save(updatedTodo) { result in
-        switch result {
-        case .success(let savedTodo):
-            completion(.success(true))
-          print("Updated item: \(savedTodo as Any )")
-        case .failure(let error):
-            completion(.success(false))
-          print("Could not update data with error: \(error)")
+        
+        
+        Amplify.DataStore.save(updatedTodo) { result in
+            switch result {
+            case .success(let savedTodo):
+                completion(.success(true))
+                print("Updated item: \(savedTodo as Any )")
+            case .failure(let error):
+                completion(.success(false))
+                print("Could not update data with error: \(error)")
+            }
         }
-      }
- }
+    }
 }

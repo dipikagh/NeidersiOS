@@ -78,7 +78,7 @@ struct VerifyAPI {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             if let jsonData = data {
-               // if let data = data {
+                // if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
                     print(json)
@@ -141,17 +141,17 @@ struct VerifyAPI {
 }
 
 protocol ForgotPasswordViewModelProtocol:class {
-   func UPdate(strPassword:String?,strid:String?,completion:@escaping (NeidersResult<Any?>) -> Void)
+    func UPdate(strPassword:String?,strid:String?,completion:@escaping (NeidersResult<Any?>) -> Void)
 }
 class ForgotPasswordViewModel:ForgotPasswordViewModelProtocol {
     func UPdate(strPassword:String?,strid:String?,completion:@escaping (NeidersResult<Any?>) -> Void){
-        
+        if (Reachability.isConnectedToNetwork()){
         print(strPassword)
-        guard let newpassword = strPassword else {
-            completion(.failure(NeidersError.customMessage("Old Password field can not be blank".localized())))
+        guard let newpassword = strPassword, newpassword.trimmed.count > 0 else {
+            completion(.failure(NeidersError.customMessage("Password field can not be blank".localized())))
             return
         }
-       if !newpassword.isValidPassword() {
+        if !newpassword.isValidPassword() {
             completion(.failure(NeidersError.customMessage("Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols".localized())))
         }else {
             guard let Id = strid else {
@@ -159,56 +159,73 @@ class ForgotPasswordViewModel:ForgotPasswordViewModelProtocol {
                 return
             }
             print(Id)
-        Amplify.API.query(request: .get(Users.self, byId: Id))
-        { event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(var user):
-                    print("retrieved the user of description \(user as Any)")
-                 //   if (user?.password == self.arrayContainer[0]){
-                        user?.password = strPassword
-                        print( user?.password as Any)
-                  
-                        let updatedTodo = user
-                       
-                      
-                        Amplify.DataStore.save(updatedTodo!) { result in
-                        switch result {
+//            Amplify.API.query(request: .get(Users.self, byId: Id))
+//            { event in
+//                switch event {
+//                case .success(let result):
+//                    switch result {
+//                    case .success(var user):
+//                        print("retrieved the user of description \(user as Any)")
+//                        //   if (user?.password == self.arrayContainer[0]){
+//                        user?.password = strPassword
+//                        print( user?.password as Any)
+//
+//                        let updatedTodo = user
+//
+//
+//                        Amplify.DataStore.save(updatedTodo!) { result in
+//                            switch result {
+//                            case .success(let savedTodo):
+//
+//                                print("Updated item: \(savedTodo as Any )")
+//                                completion(.success(true))
+//                            case .failure(let error):
+//                                completion(.success(false))
+//                                print("Could not update data with error: \(error)")
+//                            }
+//                        }
+//
+//
+//                    case .failure(let error):
+//                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                        print("Got failed result with \(error.errorDescription)")
+//                    }
+//                case .failure(let error):
+//                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                    print("Got failed event with error \(error)")
+//                }
+//            }
+//        }
+            
+            Amplify.DataStore.query(Users.self,
+                                    where: Users.keys.id.eq("\(Id)")) { result in
+                switch(result) {
+                case .success(let user):
+                    guard user.count == 1, var updateduser = user.first else {
+                        print("Did not find exactly one todo, bailing")
+                        return
+                    }
+                    updateduser.password = strPassword
+                    Amplify.DataStore.save(updateduser) { result in
+                        switch(result) {
                         case .success(let savedTodo):
-                          
-                          print("Updated item: \(savedTodo as Any )")
+                            print("Updated item: \(String(describing: savedTodo.password))")
                             completion(.success(true))
                         case .failure(let error):
+                            print("Could not update data in DataStore: \(error)")
                             completion(.success(false))
-                          print("Could not update data with error: \(error)")
                         }
-                      }
-//                    self.toggleComplete(user!,completion: {(result) in
-//                        switch result {
-//                        case .success(let value):
-//                            if let success =  value as? Bool {
-//                                completion(.success(success))
-//                            }
-//                        case .failure(let error):
-//                            completion(.failure(NeidersError.customMessage(error.localizedDescription)))
-//                        }
-//                    })
-                    
-
-
+                    }
                 case .failure(let error):
                     completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                    print("Got failed result with \(error.errorDescription)")
+                    print("Could not query DataStore: \(error)")
                 }
-            case .failure(let error):
-                completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                print("Got failed event with error \(error)")
             }
-        }
-        }
         
-
+        }
+        }else {
+            completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
+        }
         
         
     }

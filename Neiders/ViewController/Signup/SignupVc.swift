@@ -30,12 +30,12 @@ class SignupVc: UIViewController,AlertDisplayer {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-       // activeTextField.delegate = self
-
+        // activeTextField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
@@ -43,14 +43,14 @@ class SignupVc: UIViewController,AlertDisplayer {
                 Bundle.setLanguage("fr")
             }
         }
-       
+        
     }
     
-
+    
     deinit {
-    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-}
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @objc private func keyboardWillShow(_ notification:Notification) {
         
@@ -99,43 +99,35 @@ class SignupVc: UIViewController,AlertDisplayer {
         }
         viewModelSignup?.callSignup(fullName: viewModelSignup?.arrayContainer[0] ?? "", email: viewModelSignup?.arrayContainer[1] ?? "", phone: viewModelSignup?.arrayContainer[3] ?? "", password: viewModelSignup?.arrayContainer[2] ?? "", loginType: viewModelSignup?.arrayContainer[4] ?? "", completion: {(result) in
             DispatchQueue.main.async {
-            switch result {
-           
-            case .success(let result):
-                hideActivityIndicator()
-                if let success = result as? Users , success.phone != "" {
-                    print(success.phone as Any)
-                    let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
-
-                        let forgotpassVC = ForgotPasswordVC(nibName: "ForgotPasswordVC", bundle: nil)
-                        forgotpassVC.phoneNumber = success.phone ?? ""
-                        forgotpassVC.isComingFromloginVC = false
-                        self.navigationController?.pushViewController(forgotpassVC, animated: true)
-                        
-                        
-                    }
-//                    let cancelAction = UIAlertAction(title: "NO", style: .cancel) { (_) in
-//
-//                    }
-                    
-                    self.showAlertWith(message: "Sign up successful".localized(), type: .custom(actions: [alertOkAction]))
-
-                  
-                       
-                    }
-                    
-              
-            case .failure(let error):
-                hideActivityIndicator()
-                self.showAlertWith(message: error.localizedDescription)
+                switch result {
                 
-            }
+                case .success(let result):
+                    hideActivityIndicator()
+                    if let success = result as? Users , success.phone != "" {
+                        print(success.phone as Any)
+                        let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                            
+                            let forgotpassVC = ForgotPasswordVC(nibName: "ForgotPasswordVC", bundle: nil)
+                            forgotpassVC.phoneNumber = success.phone ?? ""
+                            forgotpassVC.isComingFromloginVC = false
+                            self.navigationController?.pushViewController(forgotpassVC, animated: true)
+                        }
+                        self.showAlertWith(message: "Sign up successful".localized(), type: .custom(actions: [alertOkAction]))
+                        
+                    }
+                    
+                    
+                case .failure(let error):
+                    hideActivityIndicator()
+                    self.showAlertWith(message: error.localizedDescription)
+                    
+                }
             }
         })
     }
-        
     
-
+    
+    
 }
 extension SignupVc:UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -166,14 +158,17 @@ extension SignupVc:UITableViewDelegate,UITableViewDataSource {
                 cell.btnShowPassword.isHidden = false
                 cell.btnShowPassword.addTarget(self, action: #selector(showHidePassword(_:)), for: .touchUpInside)
                 cell.btnShowPassword.tag = indexPath.row
+                cell.lblPasswordDeclaration.text = "Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols".localized()
             }else if (cell.textInputType.tag == 3){
                 cell.textInputType.isSecureTextEntry = false
                 cell.textInputType.keyboardType = .phonePad
+                cell.lblPasswordDeclaration.text = ""
             }else {
                 cell.textInputType.isSecureTextEntry = false
                 cell.textInputType.keyboardType = .emailAddress
+                cell.lblPasswordDeclaration.text = ""
             }
-        
+            
             cell.textInputType.delegate = self
             cell.textInputType.autocorrectionType = .no
             cell.textInputType.addToolBar(self, selector: #selector(donePressed))
@@ -194,13 +189,21 @@ extension SignupVc:UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
+        case 0:  switch indexPath.row {
         case 0: return 75
+        case 1: return 75
+        case 2: return 90
+        case 3: return 75
+        default:
+            return 0
+        }
+        
         case 1: return 100
         case 2: return 90
         default:
             return 0
         }
-      
+        
     }
     @objc private func donePressed() {
         self.view.endEditing(true)
@@ -228,23 +231,22 @@ extension SignupVc:UITableViewDelegate,UITableViewDataSource {
     
     @objc func btnSubmitClick(_ sender:UIButton){
         callSignup()
-//        let editpassVC = HomeVC(nibName: "HomeVC", bundle: nil)
-//        self.navigationController?.pushViewController(editpassVC, animated: true)
+        
     }
     
     @objc func showHidePassword(_ sender:UIButton){
         let cell = tableSignup.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! InputTableViewCell
         if(iconClick == true) {
-           
+            
             cell.textInputType.isSecureTextEntry = false
             cell.btnShowPassword.setImage(UIImage(named: "invisible"), for: .normal)
-               } else {
-                cell.textInputType.isSecureTextEntry = true
-                cell.btnShowPassword.setImage(UIImage(named: "view"), for: .normal)
-               }
-
-               iconClick = !iconClick
-      
+        } else {
+            cell.textInputType.isSecureTextEntry = true
+            cell.btnShowPassword.setImage(UIImage(named: "view"), for: .normal)
+        }
+        
+        iconClick = !iconClick
+        
         
     }
 }
@@ -261,18 +263,18 @@ extension SignupVc: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-       
+        
         
         return true
     }
     
-   
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         activeTextField = nil
         toolbar.removeFromSuperview()
-      
-       
+        
+        
     }
 }
