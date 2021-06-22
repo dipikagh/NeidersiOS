@@ -102,7 +102,7 @@ class SignupVc: UIViewController,AlertDisplayer {
                 switch result {
                 
                 case .success(let result):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     if let success = result as? Users , success.phone != "" {
                         print(success.phone as Any)
                         let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
@@ -118,7 +118,7 @@ class SignupVc: UIViewController,AlertDisplayer {
                     
                     
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                     
                 }

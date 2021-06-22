@@ -43,6 +43,8 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
     var count = 60
     var phoneNumber:String?
     var countryCode = "+233"
+        //"+91"
+        //"+233"
     var userId:String?
     var isComingFromloginVC:Bool? = true
     var viewModelForgotPassword:ForgotPasswordViewModel?
@@ -267,11 +269,11 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
                 switch result{
                 case .success(let result):
                     //            DispatchQueue.main.async {
-                    let delay = 15
+                    let delay = 10
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
 //                        self.activityIndicator.stopAnimating()
 //                        self.activityIndicator.isHidden = true
-                        hideActivityIndicator()
+                        hideActivityIndicator(viewController: self)
                
                     if let success = result as? Bool , success == true {
                         let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
@@ -285,7 +287,7 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
                     }
                  }
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                 }
             }

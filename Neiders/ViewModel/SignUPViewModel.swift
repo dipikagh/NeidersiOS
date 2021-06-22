@@ -59,7 +59,7 @@ class SignupViewModel: SignupViewModelProtocol {
             case .success(let result):
                 switch result {
                 case .success(let user):
-                    print("Successfully retrieved list of todos: \(user.count)")
+                  //  print("Successfully retrieved list of todos: \(user.count)")
                     if (user.count >= 1) {
                         completion(.failure(NeidersError.customMessage("This user is already exists. Please try with another information".localized())))
                     }else {

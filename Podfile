@@ -12,6 +12,7 @@ target 'Neiders' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'Kingfisher', '~> 4.0'
+  pod 'JWTDecode', '~> 2.4'
 
 
   # Pods for Neiders

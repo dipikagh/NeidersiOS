@@ -45,7 +45,7 @@ class HomeVC: UIViewController,AlertDisplayer {
         SidePanelViewController.default.delegate = self
         SidePanelViewController.default.isloggedin = true
         viewModelHome = HomeViewModel()
-        
+        callContentList()
         txtSearch.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         
     }
@@ -70,7 +70,7 @@ class HomeVC: UIViewController,AlertDisplayer {
             self.viewModelHome?.arrayContentList = viewModelHome?.dataService ?? []
             // callContentList()
         }
-        callContentList()
+        
         collectionViewCourse.reloadData()
         
         
@@ -95,6 +95,7 @@ class HomeVC: UIViewController,AlertDisplayer {
     func callContentList(){
         DispatchQueue.main.async {
             showActivityIndicator(viewController: self)
+            self.view.isUserInteractionEnabled = false
         }
         viewModelHome?.callContentList(completion: {(result) in
             DispatchQueue.main.async {
@@ -102,7 +103,8 @@ class HomeVC: UIViewController,AlertDisplayer {
                 case .success(let result):
                     //            DispatchQueue.main.async {
                     
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
+                    self.view.isUserInteractionEnabled = true
                     if let success = result as? Bool , success == true {
                         self.collectionViewCourse.reloadData()
                     }else {
@@ -110,7 +112,8 @@ class HomeVC: UIViewController,AlertDisplayer {
                     }
                 // }
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
+                    self.view.isUserInteractionEnabled = true
                     self.showAlertWith(message: error.localizedDescription)
                 }
             }

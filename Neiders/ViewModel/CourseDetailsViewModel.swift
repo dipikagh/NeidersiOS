@@ -36,7 +36,7 @@ class CourseDetailsViewModel:CourseDetailsViewModelProtocol {
                 switch result {
                 case .success(let Contents):
                     let filteredArray = Contents.filter { $0.deleted == false}
-                    print(filteredArray.count)
+                  //  print(filteredArray.count)
                     self.arrayUnit.append(contentsOf: filteredArray)
                     self.arrayStoreUnit.append(contentsOf: filteredArray)
                     print("Successfully retrieved list  \(filteredArray.count)")
@@ -64,7 +64,7 @@ class CourseDetailsViewModel:CourseDetailsViewModelProtocol {
             let filteredArray = arrayUnit.filter { (modelObject) -> Bool in
                 return modelObject.title?.range(of: searchtext, options: String.CompareOptions.caseInsensitive) != nil
             }
-            print(filteredArray as Any)
+          //  print(filteredArray as Any)
             if (filteredArray as NSArray).count > 0{
                 self.arrayUnit = filteredArray
                 completion(.success(true))

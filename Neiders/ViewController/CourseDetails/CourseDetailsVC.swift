@@ -165,7 +165,7 @@ extension CourseDetailsVC{
                 case .success(let result):
                     //            DispatchQueue.main.async {
                     
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     if let success = result as? Bool , success == true {
                         self.unitCollectionView.reloadData()
                         callAdditionalCourse(strCourseId: strcourseId)
@@ -174,7 +174,7 @@ extension CourseDetailsVC{
                     }
                 // }
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                 }
             }
@@ -199,7 +199,7 @@ extension CourseDetailsVC{
             case .success(let result):
                 //            DispatchQueue.main.async {
                 
-                hideActivityIndicator()
+                hideActivityIndicator(viewController: self)
                 if let success = result as? Bool , success == true {
                     self.additionalCourseCollectionView.reloadData()
                 }else {
@@ -207,7 +207,7 @@ extension CourseDetailsVC{
                 }
             // }
             case .failure(let error):
-                hideActivityIndicator()
+                hideActivityIndicator(viewController: self)
                 self.showAlertWith(message: error.localizedDescription)
             }
             }

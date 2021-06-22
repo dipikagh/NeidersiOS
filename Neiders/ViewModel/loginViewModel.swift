@@ -11,7 +11,6 @@ import Amplify
 import AmplifyPlugins
 
 
-
 protocol loginViewModelProtocol:class {
     
     func callSigninApi(email:String?,password:String?, completion:@escaping (NeidersResult<Any?>) -> Void)
@@ -44,7 +43,7 @@ class loginViewModel: loginViewModelProtocol {
             case .success(let result):
                 switch result {
                 case .success(let user):
-                    print("Successfully retrieved list of todos: \(user.count)")
+                 //   print("Successfully retrieved list of todos: \(user.count)")
                     if (user.count == 1) {
                         UserDefaults.standard.setValue(user[0].email, forKey: "EMAIL")
                         UserDefaults.standard.setValue(user[0].full_name, forKey: "NAME")
@@ -71,13 +70,9 @@ class loginViewModel: loginViewModelProtocol {
         }else {
             completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
         }
-        
-        
-        
-        
-    }
+     }
     
-    // MARK:- Signup Api For FBLOGIN
+    // MARK:- Signup Api For FBLOGIN and AppleLogin
     func callSingleSignup(fullName:String?,email:String?, completion:@escaping (NeidersResult<Any?>) -> Void){
         if (Reachability.isConnectedToNetwork()) {
         let user = Users(full_name: fullName, email: email)
@@ -100,9 +95,6 @@ class loginViewModel: loginViewModelProtocol {
                     UserDefaults.standard.setValue(user.email, forKey: "EMAIL")
                     UserDefaults.standard.setValue(user.full_name, forKey: "NAME")
                     UserDefaults.standard.setValue(user.id, forKey: "ID")
-                    
-                    
-                // 5
                 
                 }
             }
@@ -112,10 +104,17 @@ class loginViewModel: loginViewModelProtocol {
         }
     }
     
-    // MARK:- Signup Api For FBLOGIN Checking If User Exist
+    // MARK:- Signup Api For FBLOGIN/Apple login Checking If User Exist
     func callSignup(fullName:String?,email:String?, completion:@escaping (NeidersResult<Any?>) -> Void){
         
-     
+//        guard let fullName = fullName, fullName.trimmed.count > 0 else {
+//            completion(.failure(NeidersError.customMessage("Cancelled".localized())))
+//            return
+//        }
+//        guard let email = email, email.trimmed.count > 0 else {
+//            completion(.failure(NeidersError.customMessage("Cancelled".localized())))
+//            return
+//        }
         
         let user = Users.keys
         let predicate = user.email == email
@@ -140,7 +139,18 @@ class loginViewModel: loginViewModelProtocol {
                             }
                         })
                     }else if (user.count == 0){
-                        completion(.failure(NeidersError.customMessage("Please signin to continue".localized())))
+                        self.callSingleSignup(fullName: fullName, email: email,  completion: {(result) in
+                            switch result {
+                            case .success(let value):
+                                if let success =  value as? Bool, success == true {
+                                    completion(.success(true))
+                                }
+                            case .failure(let error):
+                                completion(.failure(NeidersError.customMessage(error.localizedDescription)))
+                                
+                                
+                            }
+                        })
                     }
                     else {
                         self.callSingleSignup(fullName: fullName, email: email,  completion: {(result) in
@@ -173,7 +183,7 @@ class loginViewModel: loginViewModelProtocol {
         
     }
     
-    // If already signup with fb then login
+    // If already signup with fb/ Apple then login
     func callfbSigninApi(email:String?, completion:@escaping (NeidersResult<Any?>) -> Void){
         
         let user = Users.keys
@@ -260,10 +270,6 @@ class loginViewModel: loginViewModelProtocol {
         }else {
             completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
         }
-        
-        
-        
-        
     }
     
     

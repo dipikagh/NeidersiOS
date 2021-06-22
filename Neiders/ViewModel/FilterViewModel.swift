@@ -51,7 +51,7 @@ class FilterViewModel:FilterViewModelProtocol {
                 switch result {
                 case .success(let Contents):
                     let filteredArray = Contents.filter { $0.deleted == false}
-                    print(filteredArray.count)
+                   // print(filteredArray.count)
                     self.arrayContentList.append(contentsOf: filteredArray)
                     let uniqueBasedOnName = (self.arrayContentList ).compactMap { $0.organization_name }
                     let uniqueBasedOntype = (self.arrayContentList ).compactMap { $0.content_type }
@@ -64,7 +64,7 @@ class FilterViewModel:FilterViewModelProtocol {
                     
                     print(uniqueBasedOnName)
                     
-                    print("Successfully retrieved list  \(Contents.count)")
+                  //  print("Successfully retrieved list  \(Contents.count)")
                     completion(.success(true))
                     
                 case .failure(let error):
@@ -128,9 +128,9 @@ class FilterViewModel:FilterViewModelProtocol {
                         switch result {
                         case .success(let Contents):
                             let filteredArray = Contents.filter { $0.deleted == false}
-                            print(filteredArray.count)
+                           // print(filteredArray.count)
                             self.arrayContentList.append(contentsOf: filteredArray)
-                            print("Successfully retrieved list  \(Contents.count)")
+                           // print("Successfully retrieved list  \(Contents.count)")
                             completion(.success(true))
                             
                         case .failure(let error):
@@ -151,7 +151,7 @@ class FilterViewModel:FilterViewModelProtocol {
                         switch result {
                         case .success(let Contents):
                             let filteredArray = Contents.filter { $0.deleted == false}
-                            print(filteredArray.count)
+                           // print(filteredArray.count)
                             self.arrayContentList.append(contentsOf: filteredArray)
                             print("Successfully retrieved list  \(Contents.count)")
                             completion(.success(true))

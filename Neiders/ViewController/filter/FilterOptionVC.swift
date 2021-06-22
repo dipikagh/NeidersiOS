@@ -62,7 +62,7 @@ class FilterOptionVC: UIViewController,AlertDisplayer {
                 case .success(let result):
                     //            DispatchQueue.main.async {
                     
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     if let success = result as? Bool , success == true {
                         self.tableFilter.reloadData()
                     }else {
@@ -70,7 +70,7 @@ class FilterOptionVC: UIViewController,AlertDisplayer {
                     }
                 // }
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                 }
             }
@@ -92,7 +92,7 @@ class FilterOptionVC: UIViewController,AlertDisplayer {
                 case .success(let result):
                     //            DispatchQueue.main.async {
                     
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     if let success = result as? Bool , success == true {
                         _ = self.navigationController?.popViewController(animated: true)
                         let previousViewController = self.navigationController?.viewControllers.last as? HomeVC
@@ -104,7 +104,7 @@ class FilterOptionVC: UIViewController,AlertDisplayer {
                     }
                 // }
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                 }
             }

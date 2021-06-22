@@ -54,7 +54,7 @@ extension Environment {
 // MARK: - App Constants
 
 struct AppConstant {
-    static let appTitle = "Open content for development"
+    static let appTitle = "Open Content for Development"
         //Bundle.main.object(forInfoDictionaryKey:"CFBundleName") as! String
     
     static let appDel = UIApplication.shared.delegate as! AppDelegate
@@ -88,24 +88,6 @@ enum FontName: String {
     case latoRegular = "Lato-Regular"
 }
 
-//MARK:- card name
-
-enum CardName: String {
-    
-    case AmericanExpress = "American Express"
-    case Dankort = "Dankort"
-    case DinersClub = ""
-    case Discover = "Discover"
-    case JCB = "JCB"
-    case Maestro = "Maestro"
-    case MasterCard = "MasterCard"
-    case UnionPay = "UnionPay"
-    case VisaElectron = "VisaElectron"
-    case Visa = "Visa"
-    case NotRecognized = "Default"
-    
-   
-}
 
 
 // MARK: - Keychain Constants
@@ -154,25 +136,25 @@ extension NeidersError: LocalizedError {
 
 
 //MARK: - UITableViewCells
-
-struct TableViewCell {
-    static let serviceCell = "ServiceTableViewCell"
-    static let baltimoreCell = "BaltimorePassTableViewCell"
-    static let cartCell = "CartTableViewCell"
-    static let AddPaymentCell = "AddPaymentMethodTableViewCell"
-    static let PaymentOptionCell = "PaymentOptionTableCell"
-    static let myTicketCell = "MyTicketTableViewCell"
-    static let profileCell = "ProfileTableViewCell"
-    static let NotificationCell = "NotificationTableViewCell"
-    static let Discountcell = "DiscountTableViewCell"
-    static let searchLocationcell = "searchLocationTableCell"
-    static let selectCell = "SelectOptionTableViewCell"
-    static let cardCell = "CardTableViewCell"
-    static let UploadImgCell = "UploadIdImgTableViewCell"
-    static let splitCell = "SplitPaymentTableViewCell"
-    static let smartBenefitcell = "SmartBenefitTableViewCell"
-    static let AddcardDoneCell = "AddCardDoneTableViewCell"
-}
+//
+//struct TableViewCell {
+//    static let serviceCell = "ServiceTableViewCell"
+//    static let baltimoreCell = "BaltimorePassTableViewCell"
+//    static let cartCell = "CartTableViewCell"
+//    static let AddPaymentCell = "AddPaymentMethodTableViewCell"
+//    static let PaymentOptionCell = "PaymentOptionTableCell"
+//    static let myTicketCell = "MyTicketTableViewCell"
+//    static let profileCell = "ProfileTableViewCell"
+//    static let NotificationCell = "NotificationTableViewCell"
+//    static let Discountcell = "DiscountTableViewCell"
+//    static let searchLocationcell = "searchLocationTableCell"
+//    static let selectCell = "SelectOptionTableViewCell"
+//    static let cardCell = "CardTableViewCell"
+//    static let UploadImgCell = "UploadIdImgTableViewCell"
+//    static let splitCell = "SplitPaymentTableViewCell"
+//    static let smartBenefitcell = "SmartBenefitTableViewCell"
+//    static let AddcardDoneCell = "AddCardDoneTableViewCell"
+//}
 
 
 //MARK: - UICollectionViewCells
@@ -376,11 +358,13 @@ func showActivityIndicator(viewController:UIViewController) {
     activityView = UIActivityIndicatorView(style: .large)
     activityView?.center = viewController.view.center
     viewController.view.addSubview(activityView!)
+    viewController.view.isUserInteractionEnabled = false
     activityView?.startAnimating()
 }
 
-func hideActivityIndicator(){
+func hideActivityIndicator(viewController:UIViewController){
     if (activityView != nil){
+        viewController.view.isUserInteractionEnabled = true
         activityView?.stopAnimating()
     }
 }

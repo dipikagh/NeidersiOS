@@ -34,10 +34,10 @@ class HomeViewModel:HomeViewModelProtocol {
                 switch result {
                 case .success(let Contents):
                     let filteredArray = Contents.filter { $0.deleted == false}
-                    print(filteredArray.count)
+                   // print(filteredArray.count)
                     self.dataService?.append(contentsOf: filteredArray)
                     self.arrayContentList.append(contentsOf: filteredArray)
-                    print("Successfully retrieved list  \(Contents.count)")
+                 //   print("Successfully retrieved list  \(Contents.count)")
                     completion(.success(true))
                     
                 case .failure(let error):

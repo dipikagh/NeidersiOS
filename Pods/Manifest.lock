@@ -31,6 +31,7 @@ PODS:
     - FBSDKShareKit/Share (= 9.3.0)
   - FBSDKShareKit/Share (9.3.0):
     - FBSDKCoreKit (~> 9.3.0)
+  - JWTDecode (2.6.1)
   - Kingfisher (4.10.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - JWTDecode (~> 2.4)
   - Kingfisher (~> 4.0)
 
 SPEC REPOS:
@@ -57,6 +59,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - JWTDecode
     - Kingfisher
     - SQLite.swift
     - Starscream
@@ -70,10 +73,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
   FBSDKShareKit: 70889c97c62f0c6b3ccb8b999e73a85f19024001
+  JWTDecode: 5e6d4b49c2b098f994cf7617401c195c8c06300b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 1fae511cab6596cd12e72dae9c533cd714604b19
+PODFILE CHECKSUM: 0dafd0fc31ad73aadf2535bbd818683a5595e700
 
 COCOAPODS: 1.10.1

@@ -10,6 +10,8 @@ import Amplify
 import AmplifyPlugins
 import FBSDKLoginKit
 import FBSDKCoreKit
+import AuthenticationServices
+import JWTDecode
 
 
 class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
@@ -28,7 +30,8 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     
     @IBOutlet weak var btnShowPassword: UIButton!
     
-  
+    @IBOutlet weak var stackViewAppleLogin: UIStackView!
+    
     
     var viewModelLogin: loginViewModel?
     var arrCointainer = ["",""]
@@ -55,7 +58,7 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         textInputPassword.tag = 1
         textInputEmail.addTarget(self, action: #selector(textInputValue(_:)), for: .editingChanged)
         textInputPassword.addTarget(self, action: #selector(textInputValue(_:)), for: .editingChanged)
-        
+        setupProviderLoginView()
         
         
         // Do any additional setup after loading the view.
@@ -72,12 +75,19 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
             }
         }
         
-        
-//        textInputEmail.text = ""
-//        textInputPassword.text = ""
         arrCointainer = ["",""]
         setLanguage()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       // performExistingAccountSetupFlows()
+    }
+    
+    func setupProviderLoginView() {
+        let authorizationButton = ASAuthorizationAppleIDButton()
+        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        self.stackViewAppleLogin.addArrangedSubview(authorizationButton)
     }
     func setLanguage() {
         buttonSignup.setTitle("Sign up".localized(), for: .normal)
@@ -105,6 +115,32 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         
         lblSignup.attributedText = myMutableString
     }
+    
+    /// - Tag: perform_appleid_request for AppleSignin
+    @objc
+    func handleAuthorizationAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    // - Tag: perform_appleid_password_request
+    /// Prompts the user if an existing iCloud Keychain credential or Apple ID credential is found.
+//    func performExistingAccountSetupFlows() {
+//        // Prepare requests for both Apple ID and password providers.
+//        let requests = [ASAuthorizationAppleIDProvider().createRequest(),
+//                        ASAuthorizationPasswordProvider().createRequest()]
+//
+//        // Create an authorization controller with the given requests.
+//        let authorizationController = ASAuthorizationController(authorizationRequests: requests)
+//        authorizationController.delegate = self
+//        authorizationController.presentationContextProvider = self
+//        authorizationController.performRequests()
+//    }
     
     func facebookLogin(){
         if let token = AccessToken.current,
@@ -186,7 +222,7 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                 switch result {
                 
                 case .success(let result):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     
                     if let success = result as? Bool , success == true {
                         
@@ -196,7 +232,7 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                     
                     
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                     
                 }
@@ -215,7 +251,7 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                 switch result {
                 
                 case .success(let result):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     
                     if let user = result as? Users {
                         
@@ -229,7 +265,7 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                     
                     
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                     
                 }
@@ -305,8 +341,9 @@ extension LogInVC{
                 //                }
                 print("FB ID: \(self.fbId)\n FB Email:\(self.fbEmail) \n FbFName:\(self.fbName) \n fbLName:\(self.fbLName) \n \(getPhone)")
                 ////CALL API BY LOGIN WITH FB
-                
+                if (self.fbEmail != "") {
                 self.callSignup(strFullName:self.fbName,strEmail:self.fbEmail )
+                }
                 
             })
         }
@@ -369,7 +406,7 @@ extension LogInVC{
                 switch result {
                 
                 case .success(let result):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     if let success = result as? Bool , success == true {
                         
                         let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
@@ -378,7 +415,7 @@ extension LogInVC{
                     
                     
                 case .failure(let error):
-                    hideActivityIndicator()
+                    hideActivityIndicator(viewController: self)
                     self.showAlertWith(message: error.localizedDescription)
                     
                 }
@@ -386,5 +423,81 @@ extension LogInVC{
         })
         
         
+    }
+}
+
+extension LogInVC: ASAuthorizationControllerDelegate {
+    /// - Tag: did_complete_authorization
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+
+            // Create an account in your system.
+            let userIdentifier = appleIDCredential.user
+
+            print(userIdentifier)
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email ?? ""
+
+            if let identityTokenData = appleIDCredential.identityToken,let identityTokenString = String(data: identityTokenData, encoding: .utf8) {
+                print("Identity Token \(identityTokenString)")
+                do {
+                   let jwt = try decode(jwt: identityTokenString)
+                   let decodedBody = jwt.body as Dictionary
+                   print(decodedBody)
+                   print("Decoded email: "+(decodedBody["email"] as? String ?? "n/a"))
+                 let getEmail = (decodedBody["email"] as? String ?? "n/a")
+                    let Name = "\(fullName?.givenName ?? "") \(fullName?.familyName ?? "")"
+                    print(getEmail, "\(Name)")
+                    if (Name != ""){
+                        
+                        callSignup(strFullName:Name,strEmail:getEmail )
+                    }
+                } catch {
+                   print("decoding failed")
+                }
+
+            }
+
+        case let passwordCredential as ASPasswordCredential:
+
+            // Sign in using an existing iCloud Keychain credential.
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+
+            // For the purpose of this demo app, show the password credential as an alert.
+            DispatchQueue.main.async {
+                self.showPasswordCredentialAlert(username: username, password: password)
+            }
+
+        default:
+            break
+        }
+    }
+
+
+
+    private func showPasswordCredentialAlert(username: String, password: String) {
+        let message = "The app has received your selected credential from the keychain. \n\n Username: \(username)\n Password: \(password)"
+        let alertController = UIAlertController(title: "Keychain Credential Received",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    /// - Tag: did_complete_error
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+
+
+
+    
+}
+extension LogInVC: ASAuthorizationControllerPresentationContextProviding {
+    /// - Tag: provide_presentation_anchor
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
     }
 }
