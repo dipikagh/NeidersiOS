@@ -43,7 +43,12 @@ class HomeVC: UIViewController,AlertDisplayer {
         collectionViewCourse.register(CourseCollectionCell.self)
         setupUI()
         SidePanelViewController.default.delegate = self
-        SidePanelViewController.default.isloggedin = true
+       // SidePanelViewController.default.isloggedin = false
+        if let _ = UserDefaults.standard.value(forKey: "ID") {
+            SidePanelViewController.default.isloggedin = true
+        }else {
+            SidePanelViewController.default.isloggedin = false
+        }
         viewModelHome = HomeViewModel()
         callContentList()
         txtSearch.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
@@ -129,6 +134,12 @@ class HomeVC: UIViewController,AlertDisplayer {
         else {
             SidePanelViewController.default.show(on: self)
             sender.isSelected = true
+            if let _ = UserDefaults.standard.value(forKey: "ID") {
+                SidePanelViewController.default.isloggedin = true
+            }else {
+                SidePanelViewController.default.isloggedin = false
+            }
+            
         }
     }
     

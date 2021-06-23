@@ -213,6 +213,14 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         callSignin()
       
     }
+    
+    @IBAction func btnSkiplogin(_ sender: Any) {
+        let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+        self.navigationController?.pushViewController(homeVC, animated: true)
+        
+    }
+    
+    
     func callSignin(){
         DispatchQueue.main.async {
             showActivityIndicator(viewController: self)

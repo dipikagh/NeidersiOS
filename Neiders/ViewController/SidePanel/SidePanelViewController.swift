@@ -40,8 +40,10 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
     var viewModelSidePanel: SidePanelViewModelProtocol?
     var isloggedin:Bool = false
     var isSelectLogOut:Bool = false
+    var arrDisplayContent = [["",""]]
     
-    var arrDefaultContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
+    var arrLoggedContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
+    var arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +83,8 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
         }
         //tblSidePanel.reloadData()
         lblHello.text = "Hello".localized()
-        arrDefaultContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
+//        arrLoggedContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
+//        arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
         if let username = UserDefaults.standard.string(forKey: "NAME") {
             lblUserName.text = username
         }
@@ -91,11 +94,17 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
         if let userType = UserDefaults.standard.string(forKey: "LOGINTYPE")  {
             lblUserName2.text = userType
         }
-        
-        
-        
-        
-        SidePanelViewController.default.reloadMenu(for: .new)
+        if isloggedin {
+            SidePanelViewController.default.reloadMenu(for: .loggedIn)
+            self.lblUserName.isHidden = false
+            self.lblUserName2.isHidden = false
+            self.lblUserEmail.isHidden = false
+        }else {
+            SidePanelViewController.default.reloadMenu(for: .new)
+            self.lblUserName.isHidden = true
+            self.lblUserName2.isHidden = true
+            self.lblUserEmail.isHidden = true
+        }
     }
     
     
@@ -116,13 +125,27 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
     func reloadMenu(for type: MenuOptions) {
         switch type {
         case .new:
-            viewModelSidePanel?.initiateMenuForFirstTimeUser()
-            isloggedin = false
+            initiateMenuForFirstTimeUser()
+            //isloggedin = false
         case .loggedIn:
-            viewModelSidePanel?.initiateMenuForLoggedInUser()
-            isloggedin = true
+            initiateMenuForLoggedInUser()
+           // isloggedin = true
         }
         
+    }
+    
+    func initiateMenuForFirstTimeUser() {
+        arrDisplayContent.removeAll()
+        arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
+      
+        arrDisplayContent.append(contentsOf: arrDefaultContents)
+
+    }
+    func initiateMenuForLoggedInUser () {
+        arrDisplayContent.removeAll()
+        arrLoggedContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
+       // arrDisplayContent = arrLoggedContents
+        arrDisplayContent.append(contentsOf: arrLoggedContents)
     }
     func show(on parent:UIViewController) {
         
@@ -194,7 +217,7 @@ extension SidePanelViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrDefaultContents.count
+        return arrDisplayContent.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,14 +234,15 @@ extension SidePanelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  String(describing: SidePanelTableViewCell.self), for: indexPath) as! SidePanelTableViewCell
         //cell.configureFrom(viewModelSidePanel, indexPath: indexPath)
-        cell.lblOptioin.text = arrDefaultContents[indexPath.row][0]
+        cell.lblOptioin.text = arrDisplayContent[indexPath.row][0]
         
-        cell.imgViewOption.image = UIImage(named: arrDefaultContents[indexPath.row][1])
+        cell.imgViewOption.image = UIImage(named: arrLoggedContents[indexPath.row][1])
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isloggedin {
         if (indexPath.row == 0) {
             if let homeVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: HomeVC.self) {
                 UIApplication.getTopMostViewController()?.navigationController?.popToViewController(homeVC, animated: true)
@@ -254,6 +278,30 @@ extension SidePanelViewController: UITableViewDelegate, UITableViewDataSource {
             
             
             logout()
+        }
+        }else {
+            if (indexPath.row == 0) {
+                if let homeVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: HomeVC.self) {
+                    UIApplication.getTopMostViewController()?.navigationController?.popToViewController(homeVC, animated: true)
+                    
+                }
+                else {
+                    let myCartVC = HomeVC(nibName: "HomeVC", bundle: nil)
+                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(myCartVC, animated: true)
+                }
+            }
+            else if (indexPath.row == 1){
+                
+                if let myCartVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: HomeVC.self) {
+                    UIApplication.getTopMostViewController()?.navigationController?.popToViewController(myCartVC, animated: true)
+                }
+                else {
+                    let myCartVC = HomeVC(nibName: "HomeVC", bundle: nil)
+                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(myCartVC, animated: true)
+                    
+                }
+                delegate?.showLanguagePopUP(status: true)
+            }
         }
         hide()
         

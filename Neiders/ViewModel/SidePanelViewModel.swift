@@ -18,7 +18,7 @@ class SidePanelViewModel: SidePanelViewModelProtocol {
    
     var arrContents:Array<Dictionary<String,Array<Dictionary<String,String>>>> = [["":[["Home".localized():"home_icon"],["Edit Password".localized():"edit_password_icon"],["Language".localized():"translate"],["Log out".localized():"logout_icon"]]]]
     
-  
+  var arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
     
     private(set) var arrDisplayContent = [SidePanelModel]()
     

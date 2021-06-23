@@ -30,6 +30,8 @@ class CourseDetailsViewModel:CourseDetailsViewModelProtocol {
         if (Reachability.isConnectedToNetwork()) {
         let content = ContentUnit.keys
         let predict = content.course_id == courseId
+            arrayUnit.removeAll()
+            arrayStoreUnit.removeAll()
         Amplify.API.query(request: .paginatedList(ContentUnit.self, where: predict, limit: 1000)) { event in
             switch event {
             case .success(let result):
