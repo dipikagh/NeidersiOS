@@ -59,7 +59,7 @@ struct AppConstant {
     
     static let appDel = UIApplication.shared.delegate as! AppDelegate
     static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    static let defaultToolbarHeight:CGFloat = 45
+    static let defaultToolbarHeight:CGFloat = 35
     static let cartFileName = "CartSession"
     static let profileDetails = "UserSession"
     static let profileImageFileName = "profile.jpeg"
@@ -313,10 +313,10 @@ class basicfunc:NSObject{
         picker.setValue(UIColor.black, forKey: "textColor")
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
-        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 280, width: UIScreen.main.bounds.size.width, height: 280)
+        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 260, width: UIScreen.main.bounds.size.width, height: 260)
        // viewSelectMonth.addToolBar(self, selector: #selector(donePressed))
         viewController.view.addSubview(picker)
-        toolbar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 280, width: UIScreen.main.bounds.size.width, height: 50))
+        toolbar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 260, width: UIScreen.main.bounds.size.width, height: 35))
         
         toolbar.barStyle = .black
         toolbar.isTranslucent = false

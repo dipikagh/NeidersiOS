@@ -43,7 +43,7 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
     var arrDisplayContent = [["",""]]
     
     var arrLoggedContents = [["Home".localized(),"home_icon"],["Edit Password".localized(),"edit_password_icon"],["Language".localized(),"translate"],["Log out".localized(),"logout_icon"]]
-    var arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
+    var arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"],["Login".localized(),"enter"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +76,8 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
@@ -136,7 +138,7 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
     
     func initiateMenuForFirstTimeUser() {
         arrDisplayContent.removeAll()
-        arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"]]
+        arrDefaultContents = [["Home".localized(),"home_icon"],["Language".localized(),"translate"],["login".localized(),"enter"]]
       
         arrDisplayContent.append(contentsOf: arrDefaultContents)
 
@@ -168,7 +170,10 @@ class SidePanelViewController: UIViewController,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
-            }else {
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
+            }
+            else {
                 Bundle.setLanguage("fr")
             }
             
@@ -236,7 +241,7 @@ extension SidePanelViewController: UITableViewDelegate, UITableViewDataSource {
         //cell.configureFrom(viewModelSidePanel, indexPath: indexPath)
         cell.lblOptioin.text = arrDisplayContent[indexPath.row][0]
         
-        cell.imgViewOption.image = UIImage(named: arrLoggedContents[indexPath.row][1])
+        cell.imgViewOption.image = UIImage(named: arrDisplayContent[indexPath.row][1])
         cell.selectionStyle = .none
         return cell
     }
@@ -302,161 +307,21 @@ extension SidePanelViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 delegate?.showLanguagePopUP(status: true)
             }
+            else {
+                if let loginVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: LogInVC.self) {
+                    UIApplication.getTopMostViewController()?.navigationController?.popToViewController(loginVC, animated: true)
+                }
+                else {
+                    let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
+                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(loginVC, animated: true)
+                }
+            }
         }
         hide()
         
     }
     
-    // }
-    // hide { (status) in
-    //        if self.isloggedin{
-    //            switch indexPath.section {
-    //            case 0:
-    //                switch indexPath.row {
-    //                case 0:
-    //                    let myTicketVC = MyTicketViewController(nibName: "MyTicketViewController", bundle: nil)
-    //
-    //                    if let tempVC = UIApplication.getTopMostViewController(), !tempVC.isKind(of: MyTicketViewController.self) {
-    //                        UIApplication.getTopMostViewController()?.navigationController?.pushViewController(myTicketVC, animated: true)
-    //                    }
-    //                    hide()
-    //                case 1:
-    //                    if (Reachability.isConnectedToNetwork()) {
-    //                    let notificationVC = NotificationViewController(nibName: "NotificationViewController", bundle: nil)
-    //                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(notificationVC, animated: true)
-    //                    hide()
-    //                    }else {
-    //                        showAlertWith(message: TCSNetworkError.offLine.localizedDescription)
-    //                    }
-    //                    break
-    //                case 2:
-    //                    if (Reachability.isConnectedToNetwork()) {
-    //                    if let myCartVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: MyCartViewController.self) {
-    //                        UIApplication.getTopMostViewController()?.navigationController?.popToViewController(myCartVC, animated: true)
-    //                    }
-    //                    else {
-    //                        let myCartVC = MyCartViewController(nibName: "MyCartViewController", bundle: nil)
-    //                        UIApplication.getTopMostViewController()?.navigationController?.pushViewController(myCartVC, animated: true)
-    //                    }
-    //                    hide()
-    //                    }else {
-    //                        showAlertWith(message: TCSNetworkError.offLine.localizedDescription)
-    //                    }
-    //                default:
-    //                    break
-    //                }
-    //            case 1:
-    //                switch indexPath.row {
-    //                case 0:
-    //                    if (Reachability.isConnectedToNetwork()) {
-    //                    guard let cell = tableView.cellForRow(at: indexPath) as? SidePanelTableViewCell  else {
-    //                        return
-    //                    }
-    //                    if cell.loginCellExists(self.viewModelSidePanel, indexPath: indexPath) {
-    //                        UIApplication.getTopMostViewController()?.navigationController?.popToRootViewController(animated: true)
-    //                    }
-    //                    else {
-    //                        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-    //                        UIApplication.getTopMostViewController()?.navigationController?.pushViewController(profileVC, animated: true)
-    //                    }
-    //                    hide()
-    //                    }else {
-    //                        showAlertWith(message: TCSNetworkError.offLine.localizedDescription)
-    //                    }
-    //
-    //                    break
-    //                case 1:
-    //                    //                    let myTicketVC = MyTicketViewController(nibName: "MyTicketViewController", bundle: nil)
-    //                    //
-    //                    //                    if let tempVC = UIApplication.getTopMostViewController(), !tempVC.isKind(of: MyTicketViewController.self) {
-    //                    //                        myTicketVC.logout()
-    //                    //                        UIApplication.getTopMostViewController()?.navigationController?.pushViewController(myTicketVC, animated: true)
-    //                    //                    }
-    //                    self.isSelectLogOut = true
-    //                    self.logout()
-    //
-    //
-    //
-    //                default:
-    //                    hide()
-    //                    break
-    //                }
-    //            case 2:
-    //                switch indexPath.row {
-    //
-    //                case 0:
-    //                 //let contactVC = ContactUsViewController(nibName: "ContactUsViewController", bundle: nil)
-    //                 //UIApplication.getTopMostViewController()?.navigationController?.pushViewController(contactVC, animated: true)
-    //                 break
-    //                 case 1:
-    //                 break
-    //                 case 2:
-    //                 break
-    //                 case 3:
-    //                let termsVC = TermsAndConditionViewController(nibName: "TermsAndConditionViewController", bundle: nil)
-    //                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(termsVC, animated: true)
-    //                    hide()
-    //                 break
-    //                 case 4:
-    //                 break
-    //                default:
-    //                    hide()
-    //                    break
-    //                }
-    //            default:
-    //                hide()
-    //                break
-    //            }
-    //        }else {
-    //            switch indexPath.section {
-    //
-    //            case 0:
-    //                switch indexPath.row {
-    //                case 0:
-    //
-    //                    UIApplication.getTopMostViewController()?.navigationController?.popToRootViewController(animated: true)
-    //                    hide()
-    //
-    //
-    //                    break
-    //                case 1:
-    //
-    //                    UIApplication.getTopMostViewController()?.navigationController?.popToRootViewController(animated: true)
-    //                    hide()
-    //                default:
-    //                    break
-    //                }
-    //            case 1:
-    //                switch indexPath.row {
-    //                case 0:
-    //                 //let contactVC = ContactUsViewController(nibName: "ContactUsViewController", bundle: nil)
-    //                 //UIApplication.getTopMostViewController()?.navigationController?.pushViewController(contactVC, animated: true)
-    //                 break
-    //                 case 1:
-    //                 break
-    //                 case 2:
-    //                 break
-    //                 case 3:
-    //                    let termsVC = TermsAndConditionViewController(nibName: "TermsAndConditionViewController", bundle: nil)
-    //                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(termsVC, animated: true)
-    //                    hide()
-    //                 break
-    //                 case 4:
-    //                 break
-    //                default:
-    //                    hide()
-    //                    break
-    //                }
-    //            default:
-    //                hide()
-    //                break
-    //            }
-    //        }
-    //}
     
-    
-    
-    //}
     
     
     

@@ -14,10 +14,10 @@
             filePath = "Neiders/ViewController/LogInVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "facebookLogin()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,58 +30,10 @@
             filePath = "Neiders/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "54885D73-33BD-469C-B015-35B664F82771"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "EditPasswordVC"
-            landmarkType = "21">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F90DB5D0-8579-40C8-9040-C0861F31D2F5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "EditPasswordVC"
-            landmarkType = "21">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "60A99906-3BB0-4189-9600-2E9427D3894D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "EditPasswordVC"
-            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,8 +94,8 @@
             filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "toggleComplete(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,58 +110,42 @@
             filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "toggleComplete(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C37CF642-911B-4480-91B6-5AE0B8915EBA - 75749c761cdc6a0a"
+                  uuid = "C37CF642-911B-4480-91B6-5AE0B8915EBA - b0bcedf263c4037d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Neiders.EditPasswordVC.toggleComplete(Neiders.Users) -&gt; ()"
                   moduleName = "Neiders"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/Neiders%202/Neiders/ViewController/EditPassword/EditPasswordVC.swift"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/EditPassword/EditPasswordVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "376"
-                  endingLineNumber = "376"
+                  startingLineNumber = "298"
+                  endingLineNumber = "298"
                   offsetFromSymbolStart = "72">
                </Location>
                <Location
-                  uuid = "C37CF642-911B-4480-91B6-5AE0B8915EBA - 8de01afc6ce0a7e2"
+                  uuid = "C37CF642-911B-4480-91B6-5AE0B8915EBA - 48286b7813f8ceeb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Result&lt;Neiders.Users, Amplify.DataStoreError&gt;) -&gt; () in Neiders.EditPasswordVC.toggleComplete(Neiders.Users) -&gt; ()"
                   moduleName = "Neiders"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/Neiders%202/Neiders/ViewController/EditPassword/EditPasswordVC.swift"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/EditPassword/EditPasswordVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "377"
-                  endingLineNumber = "377"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
                   offsetFromSymbolStart = "259">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "992DF38D-A4BC-4C28-AD01-90B98E165B67"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/EditPassword/EditPasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "EditPasswordVC"
-            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -222,8 +158,8 @@
             filePath = "Neiders/ViewModel/EditPasswordViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "toggleComplete(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +174,8 @@
             filePath = "Neiders/ViewController/WebView/UnitWebVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "downloadVideoLinkAndCreateAsset(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,25 +190,9 @@
             filePath = "Neiders/ViewController/WebView/UnitWebVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "downloadVideoLinkAndCreateAsset(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F39BA848-F70F-42DC-886C-4616D2FE91E0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/ForgotPassword/ForgotPasswordVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "buttonValidate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -286,8 +206,8 @@
             filePath = "Neiders/ViewController/ForgotPassword/ForgotPasswordVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "callForgotPasswordApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,10 +222,10 @@
             filePath = "Neiders/ViewController/LogInVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "loginManagerDidComplete(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -320,8 +240,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
             endingLineNumber = "197"
-            landmarkName = "callfbSigninApi(email:completion:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -336,8 +256,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "UPdate(strPassword:strid:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -352,8 +272,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
             endingLineNumber = "202"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "UPdate(strPassword:strid:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -368,8 +288,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "UPdate(strPassword:strid:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -398,10 +318,10 @@
             filePath = "Neiders/ViewController/LogInVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -416,8 +336,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "callSignup(fullName:email:completion:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -432,8 +352,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "callSingleSignup(fullName:email:completion:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -446,10 +366,10 @@
             filePath = "Neiders/ViewController/LogInVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "handleAuthorizationAppleIDButtonPress()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -462,8 +382,56 @@
             filePath = "Neiders/ViewController/LogInVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "LogInVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16EF1A48-2EFB-4B2F-BB31-D36A6A89D1CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewModel/FilterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "callFilteredContentList(organizationName:contentType:language:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F532367-CE05-4AD6-BBB6-FB8041F98400"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/ForgotPassword/ForgotPasswordVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "buttonValidate(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DE477C8-FD3D-432F-B496-0E30853604DD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewModel/loginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -471,17 +439,366 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "315204D0-496D-4699-B7BD-608F0969DA25"
+            uuid = "7F8D290C-7619-46FA-8365-0F7838924FF4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Neiders/ViewController/SidePanel/SidePanelViewController.swift"
+            filePath = "Neiders/ViewModel/EditPasswordViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
-            landmarkName = "logout()"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "UPdate(completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7CA320F-C129-48D3-89A4-DC6F0426FBD7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "callSignup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7812292F-8B61-4FBE-83DB-61606BBE920D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Home/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "showLanguagePopUP(status:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B46C0CA0-7094-43AB-A0DB-EF7A37EAED92"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/ForgotPassword/ForgotPasswordVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "callForgotPasswordApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58FCF36B-FC7D-42FD-AAB7-A1A327F600E2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "58FCF36B-FC7D-42FD-AAB7-A1A327F600E2 - 65880c2f859b145d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Neiders.SignupVc.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "393"
+                  endingLineNumber = "393"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  uuid = "58FCF36B-FC7D-42FD-AAB7-A1A327F600E2 - e86348de76761700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignInResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "395"
+                  endingLineNumber = "395"
+                  offsetFromSymbolStart = "90">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "093C8ED8-0535-4430-AD9E-72A03B9025C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "093C8ED8-0535-4430-AD9E-72A03B9025C3 - e86348de76761700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignInResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "395"
+                  endingLineNumber = "395"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  uuid = "093C8ED8-0535-4430-AD9E-72A03B9025C3 - e86348de76761700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignInResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "395"
+                  endingLineNumber = "395"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  uuid = "093C8ED8-0535-4430-AD9E-72A03B9025C3 - e86348de76761700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignInResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signIn(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "395"
+                  endingLineNumber = "395"
+                  offsetFromSymbolStart = "638">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBDA2E96-1CA8-4EAC-AE0D-31432A443488"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "FBDA2E96-1CA8-4EAC-AE0D-31432A443488 - 7aecd51244056f1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignUpResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.confirmSignUp(for: Swift.String, with: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "419"
+                  endingLineNumber = "419"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  uuid = "FBDA2E96-1CA8-4EAC-AE0D-31432A443488 - 7aecd51244056f1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignUpResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.confirmSignUp(for: Swift.String, with: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "419"
+                  endingLineNumber = "419"
+                  offsetFromSymbolStart = "358">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14D458DD-4C90-4187-8744-476F3D283380"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "412E3DF4-42A3-4799-ADA4-4C02B632E0D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "412E3DF4-42A3-4799-ADA4-4C02B632E0D0 - cd47092944919ed2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignUpResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signUp(username: Swift.String, password: Swift.String, email: Swift.String, phonenumber: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "154">
+               </Location>
+               <Location
+                  uuid = "412E3DF4-42A3-4799-ADA4-4C02B632E0D0 - cd47092944919ed2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignUpResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signUp(username: Swift.String, password: Swift.String, email: Swift.String, phonenumber: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  uuid = "412E3DF4-42A3-4799-ADA4-4C02B632E0D0 - cd47092944919ed2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Amplify.AuthSignUpResult, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.signUp(username: Swift.String, password: Swift.String, email: Swift.String, phonenumber: Swift.String) -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "1361">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3916BF3-DE20-4DA8-81DF-6B9B3F433E58"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Neiders/ViewController/Signup/SignupVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "D3916BF3-DE20-4DA8-81DF-6B9B3F433E58 - 5000fcde92dda2b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Amplify.AuthUserAttribute&gt;, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.fetchAttributes() -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "452"
+                  endingLineNumber = "452"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "D3916BF3-DE20-4DA8-81DF-6B9B3F433E58 - 5000fcde92dda2b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Amplify.AuthUserAttribute&gt;, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.fetchAttributes() -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "452"
+                  endingLineNumber = "452"
+                  offsetFromSymbolStart = "153">
+               </Location>
+               <Location
+                  uuid = "D3916BF3-DE20-4DA8-81DF-6B9B3F433E58 - 5000fcde92dda2b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Amplify.AuthUserAttribute&gt;, Amplify.AuthError&gt;) -&gt; () in Neiders.SignupVc.fetchAttributes() -&gt; ()"
+                  moduleName = "Neiders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dipikaghosh/Documents/ProjectInteljic/NeidersProject/DownloadLogin/Neiders%202/Neiders/ViewController/Signup/SignupVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "452"
+                  endingLineNumber = "452"
+                  offsetFromSymbolStart = "673">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

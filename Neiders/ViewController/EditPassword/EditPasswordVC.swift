@@ -33,9 +33,12 @@ class EditPasswordVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
+            
         }
         
     }
@@ -236,70 +239,21 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
     }
     
     
-//    func updatePassword(){
-//        let user = Users.keys
-//        let predicate = user.email == "dip3@yopmail.com" && user.password == "Qwerty90*"
-//        Amplify.API.query(request: .paginatedList(Users.self, where: predicate, limit: 1000)) { event in
-//            switch event {
-//            case .success(let result):
-//                switch result {
-//                case .success(let user):
-//                  //  print("Successfully retrieved list of todos: \(user.self as Any)")
-//                    if (user.count == 1) {
-//                        self.Userd = user[0]
-//                        self.Userd.password = "Qwerty999*"
-//                        print(self.Userd)
-//                        Amplify.API.mutate(request: .update(self.Userd , where: predicate)) { event in
-//                            switch event {
-//                            case .success(let result):
-//                                switch result {
-//                                case .success(let users):
-//                                    print("Successfully created todo: \(String(describing: users.password))")
-//                                case .failure(let error):
-//                                    print("Got failed result with \(error.errorDescription)")
-//                                }
-//                            case .failure(let error):
-//                                print("Got failed event with error \(error)")
-//                            }
-//                        }
-//
-//
-//                    }else if (user.count == 0) {
-//                        //  completion(.failure(NeidersError.customMessage("Wrong credential! \nPlease check your Email or Password".localized())))
-//                    }else {
-//                        //  completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-//                    }
-//                case .failure(let error):
-//                    //  completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-//
-//                    print("Got failed result with \(error.errorDescription)")
-//                }
-//            case .failure(let error):
-//                // completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-//
-//                print("Got failed event with error \(error)")
-//            }
-//        }
-//        // Retrieve your Todo using Amplify.API.query
-//
-//    }
+
     
     func callEditPasswordApi(){
         
         DispatchQueue.main.async {
             showActivityIndicator(viewController: self)
-//            self.activityView = UIActivityIndicatorView(style: .large)
-//            self.activityView?.center = self.view.center
-//            self.view.addSubview(self.activityView!)
-//            self.activityView?.startAnimating()
+
         }
         viewModelEditPassword?.UPdate(completion: { (result) in
            
                 switch result{
                 case .success(let result):
-                    //            DispatchQueue.main.async {
+                           //     DispatchQueue.main.async {
                     
-                    let delay = 15
+                   let delay = 15
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
 //                        self.activityView?.stopAnimating()
 //                        self.activityView?.isHidden = true
@@ -333,39 +287,7 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
     
    
     
-//    func UPdate(){
-//
-//
-//        let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
-//        print(Id)
-//
-//        let amplifyre =  Amplify.API.query(request: .get(Users.self, byId: Id))
-//        { event in
-//            switch event {
-//            case .success(let result):
-//                switch result {
-//                case .success(var user):
-//                    print("retrieved the user of description \(user as Any)")
-//
-//                    user?.password = "12345678Aa%"
-//
-//
-//                    print( user as Any)
-//                    var todo = user!.self
-//                    todo.password = "12345678Aa%"
-//
-//                    self.toggleComplete(user!)
-//
-//
-//
-//                case .failure(let error):
-//                    print("Got failed result with \(error.errorDescription)")
-//                }
-//            case .failure(let error):
-//                print("Got failed event with error \(error)")
-//            }
-//        }
-//    }
+
     
     func toggleComplete(_ todo: Users) {
         let updatedTodo = todo
@@ -386,56 +308,7 @@ extension EditPasswordVC:UITableViewDelegate,UITableViewDataSource {
         
     }
     
-//    func getupdate(){
-//        let Id = UserDefaults.standard.value(forKey: "ID") as? String ?? ""
-//        print(Id)
-//        _ = Amplify.API.query(request: .get(Users.self, byId: Id)) { [self] event in
-//            DispatchQueue.main.async {
-//                switch event {
-//                case .failure(let error):
-//                    print("Error occurred: \(error.localizedDescription )")
-//                //userPostcodeState = .errored(error)
-//                case .success(let result):
-//                    switch result {
-//                    case .failure(let resultError):
-//                        print("Error occurred: \(resultError.localizedDescription )")
-//                    // userPostcodeState = .errored(resultError)
-//                    case .success(let user):
-//                        guard var user = user else {
-//                            
-//                            return
-//                        }
-//                        
-//                        // 2
-//                        user.password = "Poiuyt90&"
-//                        
-//                        _ = Amplify.API.mutate(request: .update(user)) { event in
-//                            // 4
-//                            DispatchQueue.main.async {
-//                                switch event {
-//                                case .failure(let error):
-//                                    //logger?
-//                                    print("Error occurred: \(error.localizedDescription )")
-//                                // userPostcodeState = .errored(error)
-//                                case .success(let result):
-//                                    switch result {
-//                                    case .failure(let resultError):
-//                                        print(
-//                                            "Error occurred: \(resultError.localizedDescription )")
-//                                    // userPostcodeState = .errored(resultError)
-//                                    case .success(let savedUser):
-//                                        // 5
-//                                        print(savedUser.password as Any)
-//                                    // userPostcodeState = .loaded(savedUser.postcode)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+
     
     
 }

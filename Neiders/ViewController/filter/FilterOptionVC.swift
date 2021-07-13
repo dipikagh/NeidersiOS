@@ -45,9 +45,12 @@ class FilterOptionVC: UIViewController,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
+            
         }
     }
     

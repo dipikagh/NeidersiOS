@@ -12,6 +12,10 @@ import AmplifyPlugins
 import AWSPluginsCore
 import FBSDKCoreKit
 import FBSDKLoginKit
+import AWSAuthCore
+//import AWSCognitoIdentityProvider
+//import AWSCognitoIdentityProviderASF
+import AWSMobileClient
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
         do {
                 try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
+                try Amplify.add(plugin: AWSCognitoAuthPlugin())
                 try Amplify.add(plugin: dataStorePlugin)
                 try Amplify.configure()
                 print("Amplify configured with API plugin")
@@ -48,22 +53,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
         }
         else {
-            if let _ = UserDefaults.standard.value(forKey: "ID"){
+          //  if let _ = UserDefaults.standard.value(forKey: "ID"){
                 let loginVC = HomeVC(nibName: "HomeVC", bundle: nil)
                 let navigationController = UINavigationController(rootViewController: loginVC)
                 navigationController.navigationBar.isHidden = true
                 navigationController.setNeedsStatusBarAppearanceUpdate()
                 window?.rootViewController = navigationController
                 window?.makeKeyAndVisible()
-            }else {
-                        let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
-                        let navigationController = UINavigationController(rootViewController: loginVC)
-                        navigationController.navigationBar.isHidden = true
-                        navigationController.setNeedsStatusBarAppearanceUpdate()
-                        window?.rootViewController = navigationController
-                        window?.makeKeyAndVisible()
-            }
+//            }else {
+//                        let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
+//                        let navigationController = UINavigationController(rootViewController: loginVC)
+//                        navigationController.navigationBar.isHidden = true
+//                        navigationController.setNeedsStatusBarAppearanceUpdate()
+//                        window?.rootViewController = navigationController
+//                        window?.makeKeyAndVisible()
+//            }
         }
+        
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:0feaa578-d8a1-4607-b727-6c1071cc288f")
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
         return true
     }
 
@@ -81,8 +90,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                 annotation: options[UIApplication.OpenURLOptionsKey.annotation]
             )
+       return AWSCognitoAuth.default().application(app, open: url, options: options)
 
         }
+//
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//      return AWSCognitoAuth.default().application(app, open: url, options: options)
+//    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

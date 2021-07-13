@@ -8,11 +8,13 @@ target 'Neiders' do
   pod 'Amplify/Tools'
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   pod 'FBSDKLoginKit'
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'Kingfisher', '~> 4.0'
   pod 'JWTDecode', '~> 2.4'
+  pod 'MRCountryPicker'
 
 
   # Pods for Neiders

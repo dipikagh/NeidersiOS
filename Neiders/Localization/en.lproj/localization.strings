@@ -14,6 +14,7 @@
 "Don't have an Account? Create an Account" = "  Don't  have  an  Account? Create Account";
 "Create Account" = "Create an Account";
 "Login" = "LOGIN";
+"login" = "Login";
 "Full Name" = "Full Name";
 "Email Id" = "Email Id";
 "Phone Number" = "Phone Number";
@@ -71,3 +72,4 @@
 "English is already selected" = "English is already selected";
 "Your mobile number is verified  successfully" = "Your mobile number is verified successfully";
 "Password field can not be blank" = "Password field can not be blank";
+"You need to login to download" = "You need to login to download";

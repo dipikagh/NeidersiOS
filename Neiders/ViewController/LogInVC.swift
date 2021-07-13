@@ -70,9 +70,12 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
+            
         }
         
         arrCointainer = ["",""]
@@ -97,23 +100,67 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         buttonLoginWithFb.setTitle("Log in with Facebook".localized(), for: .normal)
         
         let stringFP = "Forgot Password".localized()
-        let forgotPAssAttribute: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-            NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 14),
-            NSAttributedString.Key.foregroundColor: UIColor(named: "CustomYellow")!]
+        if let lang = UserDefaults.standard.value(forKey: "LANG") {
+            if lang as? String == "ES" {
+                let forgotPAssAttribute: [NSAttributedString.Key : Any] = [
+                    NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                    NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 12),
+                    NSAttributedString.Key.foregroundColor: UIColor(named: "CustomYellow")!]
+                
+                let attributedString = NSAttributedString(string: stringFP, attributes: forgotPAssAttribute)
+                btnForgotPAssword.setAttributedTitle(attributedString, for: .normal)
+                
+                let str = "Don't have an Account? Create an Account".localized()
+                
+                
+                var myMutableString = NSMutableAttributedString()
         
-        let attributedString = NSAttributedString(string: stringFP, attributes: forgotPAssAttribute)
-        btnForgotPAssword.setAttributedTitle(attributedString, for: .normal)
-        let str = "Don't have an Account? Create an Account".localized()
+                myMutableString = NSMutableAttributedString(string: str)
+        
+                myMutableString.setAttributes([ NSAttributedString.Key.foregroundColor : UIColor(red: 6 / 255.0, green: 68 / 255.0, blue: 108 / 255.0, alpha: 1.0)], range: NSRange(location:23,length:16)) // What ever range you want to give
+        
+                lblSignup.attributedText = myMutableString
+                
+            }else {
+                let forgotPAssAttribute: [NSAttributedString.Key : Any] = [
+                    NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                    NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 14),
+                    NSAttributedString.Key.foregroundColor: UIColor(named: "CustomYellow")!]
+                
+                let attributedString = NSAttributedString(string: stringFP, attributes: forgotPAssAttribute)
+                btnForgotPAssword.setAttributedTitle(attributedString, for: .normal)
+                
+                let str = "Don't have an Account? Create an Account".localized()
+                
+                
+                var myMutableString = NSMutableAttributedString()
+        
+                myMutableString = NSMutableAttributedString(string: str)
+        
+                myMutableString.setAttributes([ NSAttributedString.Key.foregroundColor : UIColor(red: 6 / 255.0, green: 68 / 255.0, blue: 108 / 255.0, alpha: 1.0)], range: NSRange(location:27,length:15)) // What ever range you want to give
+        
+                lblSignup.attributedText = myMutableString
+            }
+            
+        }
+           
+//        let forgotPAssAttribute: [NSAttributedString.Key : Any] = [
+//            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+//            NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 14),
+//            NSAttributedString.Key.foregroundColor: UIColor(named: "CustomYellow")!]
+//
+//        let attributedString = NSAttributedString(string: stringFP, attributes: forgotPAssAttribute)
+//        btnForgotPAssword.setAttributedTitle(attributedString, for: .normal)
+        //let str = "Don't have an Account? Create an Account".localized()
         
         
-        var myMutableString = NSMutableAttributedString()
-        
-        myMutableString = NSMutableAttributedString(string: str)
-        
-        myMutableString.setAttributes([ NSAttributedString.Key.foregroundColor : UIColor(red: 6 / 255.0, green: 68 / 255.0, blue: 108 / 255.0, alpha: 1.0)], range: NSRange(location:27,length:15)) // What ever range you want to give
-        
-        lblSignup.attributedText = myMutableString
+//        var myMutableString = NSMutableAttributedString()
+//        
+//        myMutableString = NSMutableAttributedString(string: str)
+//        
+//        myMutableString.setAttributes([ NSAttributedString.Key.foregroundColor : UIColor(red: 6 / 255.0, green: 68 / 255.0, blue: 108 / 255.0, alpha: 1.0)], range: NSRange(location:27,length:15)) // What ever range you want to give
+//        
+//        lblSignup.attributedText = myMutableString
     }
     
     /// - Tag: perform_appleid_request for AppleSignin
@@ -166,6 +213,10 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
         arrCointainer[textfield.tag] = textfield.text!
     }
     
+    @IBAction func btnback(_ sender: Any) {
+       self.navigationController?.popViewController(animated: true)
+       
+    }
     
     @IBAction func btnShowHidePassword(_ sender: Any) {
         
@@ -215,8 +266,8 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
     }
     
     @IBAction func btnSkiplogin(_ sender: Any) {
-        let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
-        self.navigationController?.pushViewController(homeVC, animated: true)
+//        let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+//        self.navigationController?.pushViewController(homeVC, animated: true)
         
     }
     
@@ -234,8 +285,16 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                     
                     if let success = result as? Bool , success == true {
                         
-                        let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
-                        self.navigationController?.pushViewController(homeVC, animated: true)
+                    
+                        
+                        if let unitwebVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: UnitWebVC.self) {
+                            UIApplication.getTopMostViewController()?.navigationController?.popToViewController(unitwebVC, animated: true)
+
+                        } else {
+                            let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+                            UIApplication.getTopMostViewController()?.navigationController?.pushViewController(homeVC, animated: true)
+                        }
+                    
                     }
                     
                     
@@ -265,7 +324,10 @@ class LogInVC: UIViewController,UITextFieldDelegate,AlertDisplayer {
                         
                         let forgotPassVC = ForgotPasswordVC(nibName: "ForgotPasswordVC", bundle: nil)
                         forgotPassVC.isComingFromloginVC = true
-                        forgotPassVC.phoneNumber = user.phone ?? ""
+                        let countrycode = user.phone?.components(separatedBy: " ")
+                        forgotPassVC.phoneNumber = countrycode?[1] ?? ""
+                        forgotPassVC.countryCode = countrycode?[0] ?? ""
+                       // forgotPassVC.phoneNumber = user.phone ?? ""
                         forgotPassVC.userId = user.id
                         
                         self.navigationController?.pushViewController(forgotPassVC, animated: true)

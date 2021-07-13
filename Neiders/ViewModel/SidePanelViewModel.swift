@@ -1,9 +1,8 @@
 //
-//  SidePanelViewModel.swift
-//  TCSTransit
+//  SignUPViewModel.swift
+//  Neiders
 //
-//  Created by Palash Das, Appsbee LLC on 02/11/20.
-//  Copyright © 2020 Intelebee. All rights reserved.
+//  Created by DIPIKA GHOSH on 05/05/21.
 //
 
 import Foundation

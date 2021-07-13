@@ -111,9 +111,12 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
+            
         }
         languageSet()
     }
@@ -194,8 +197,15 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
                         }else {
                             
                             let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                                let loginvc = LogInVC(nibName: "LogInVC", bundle: nil)
-                                self.navigationController?.pushViewController(loginvc, animated: true)
+//                                let loginvc = LogInVC(nibName: "LogInVC", bundle: nil)
+//                                self.navigationController?.pushViewController(loginvc, animated: true)
+                                if let loginVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: LogInVC.self) {
+                                    UIApplication.getTopMostViewController()?.navigationController?.popToViewController(loginVC, animated: true)
+
+                                } else {
+                                    let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
+                                    UIApplication.getTopMostViewController()?.navigationController?.pushViewController(loginVC, animated: true)
+                                }
                                 
                             }
                             
@@ -256,6 +266,54 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
         
     }
     
+    func callMobileNumberverify(){
+        guard let userid = userId else {
+            showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+            return
+        }
+        DispatchQueue.main.async {
+            showActivityIndicator(viewController: self)
+        }
+        viewModelForgotPassword?.UPdatePhoneVerification(isPhonevalid:true, strid: userid, completion: { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let result):
+                             //   DispatchQueue.main.async {
+                  let delay = 10
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+//                        self.activityIndicator.stopAnimating()
+//                        self.activityIndicator.isHidden = true
+                        hideActivityIndicator(viewController: self)
+               
+                    if let success = result as? Bool , success == true {
+                        let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                           // self.navigationController?.popViewController(animated: true)
+                            if let loginVC = UIApplication.getTopMostViewController()?.navigationController?.ifExitsOnStack(vc: LogInVC.self) {
+                                UIApplication.getTopMostViewController()?.navigationController?.popToViewController(loginVC, animated: true)
+
+                            } else {
+                                let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
+                                UIApplication.getTopMostViewController()?.navigationController?.pushViewController(loginVC, animated: true)
+                            }
+                            
+                        }
+                        
+                        self.showAlertWith(message: "Your mobile number is verified  successfully".localized(), type: .custom(actions: [alertOkAction]))
+                    }else {
+                        self.showAlertWith(message: "Some thing went wrong. Please try again later".localized())
+                    }
+                 }
+                case .failure(let error):
+                    hideActivityIndicator(viewController: self)
+                    self.showAlertWith(message: error.localizedDescription)
+                }
+            }
+            
+            
+        })
+        // self.navigationController?.popViewController(animated: true)
+    }
+    
     func callForgotPasswordApi(){
         guard let userid = userId else {
             "Some thing went wrong. Please try again later".localized()
@@ -268,9 +326,9 @@ class ForgotPasswordVC: UIViewController,AlertDisplayer {
             DispatchQueue.main.async {
                 switch result{
                 case .success(let result):
-                    //            DispatchQueue.main.async {
-                    let delay = 10
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+                             //   DispatchQueue.main.async {
+                  let delay = 5
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
 //                        self.activityIndicator.stopAnimating()
 //                        self.activityIndicator.isHidden = true
                         hideActivityIndicator(viewController: self)

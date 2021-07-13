@@ -102,7 +102,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhe-Aj-yFI">
                                     <rect key="frame" x="20" y="77" width="374" height="211"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="business_analysis_course_icon" translatesAutoresizingMaskIntoConstraints="NO" id="J9x-hX-od4">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9x-hX-od4">
                                             <rect key="frame" x="5" y="10" width="146" height="191"/>
                                         </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT6-Jx-CHe">
@@ -214,7 +214,6 @@
     </objects>
     <resources>
         <image name="back_btn_icon" width="64" height="64"/>
-        <image name="business_analysis_course_icon" width="574" height="702"/>
         <image name="logo" width="750" height="601"/>
         <image name="right-arrow1" width="128" height="128"/>
         <image name="search_icon" width="68" height="68"/>

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,6 +27,16 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-2o-3Tf">
                             <rect key="frame" x="120" y="68" width="174" height="71"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oo-fO-gdR">
+                            <rect key="frame" x="336" y="79" width="58" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="2oo-fO-gdR" secondAttribute="height" multiplier="1:1" id="vhx-GJ-7Xh"/>
+                            </constraints>
+                            <state key="normal" image="download-circular-button"/>
+                            <connections>
+                                <action selector="buttonDownload:" destination="-1" eventType="touchUpInside" id="J4Y-5M-hHH"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4R-ea-1of">
                             <rect key="frame" x="10" y="85" width="37.5" height="37"/>
                             <constraints>
@@ -41,12 +52,15 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="2oo-fO-gdR" secondAttribute="bottom" constant="7" id="AkO-sb-1Vr"/>
                         <constraint firstItem="b4R-ea-1of" firstAttribute="centerY" secondItem="vdE-2o-3Tf" secondAttribute="centerY" id="CHm-mk-0Tg"/>
                         <constraint firstItem="vdE-2o-3Tf" firstAttribute="top" secondItem="evr-JK-hqI" secondAttribute="top" constant="68" id="LTP-8q-fjr"/>
                         <constraint firstItem="b4R-ea-1of" firstAttribute="leading" secondItem="evr-JK-hqI" secondAttribute="leading" constant="10" id="TbZ-CU-mad"/>
                         <constraint firstAttribute="bottom" secondItem="vdE-2o-3Tf" secondAttribute="bottom" constant="5" id="Ygy-XO-6Ng"/>
                         <constraint firstItem="vdE-2o-3Tf" firstAttribute="centerX" secondItem="evr-JK-hqI" secondAttribute="centerX" id="lK9-46-BiN"/>
+                        <constraint firstAttribute="trailing" secondItem="2oo-fO-gdR" secondAttribute="trailing" constant="20" id="mD9-pv-Sjo"/>
                         <constraint firstItem="vdE-2o-3Tf" firstAttribute="width" secondItem="evr-JK-hqI" secondAttribute="width" multiplier="0.42029" id="pOd-XF-rhv"/>
+                        <constraint firstItem="2oo-fO-gdR" firstAttribute="width" secondItem="evr-JK-hqI" secondAttribute="width" multiplier="0.14" id="teP-so-Ghn"/>
                         <constraint firstAttribute="width" secondItem="evr-JK-hqI" secondAttribute="height" multiplier="207:72" id="vQ5-pu-JtI"/>
                         <constraint firstItem="b4R-ea-1of" firstAttribute="width" secondItem="evr-JK-hqI" secondAttribute="width" multiplier="0.09" id="yrz-r3-c5u"/>
                     </constraints>
@@ -59,25 +73,12 @@
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oo-fO-gdR">
-                    <rect key="frame" x="310" y="744" width="58" height="58"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="2oo-fO-gdR" secondAttribute="height" multiplier="1:1" id="vhx-GJ-7Xh"/>
-                    </constraints>
-                    <state key="normal" image="download-circular-button"/>
-                    <connections>
-                        <action selector="buttonDownload:" destination="-1" eventType="touchUpInside" id="J4Y-5M-hHH"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="2oo-fO-gdR" firstAttribute="width" secondItem="SFQ-BQ-N0y" secondAttribute="width" multiplier="0.14" id="7bz-nM-uHK"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2oo-fO-gdR" secondAttribute="bottom" constant="60" id="99s-qO-Cah"/>
                 <constraint firstItem="evr-JK-hqI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hkk-7a-q7C"/>
                 <constraint firstItem="SFQ-BQ-N0y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YZL-AY-re1"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2oo-fO-gdR" secondAttribute="trailing" constant="46" id="bxJ-sY-yDz"/>
                 <constraint firstItem="evr-JK-hqI" firstAttribute="width" secondItem="evr-JK-hqI" secondAttribute="height" multiplier="207:72" id="hff-eJ-t7a"/>
                 <constraint firstItem="SFQ-BQ-N0y" firstAttribute="top" secondItem="evr-JK-hqI" secondAttribute="bottom" id="ivb-wx-oLH"/>
                 <constraint firstItem="evr-JK-hqI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jki-F6-SP1"/>

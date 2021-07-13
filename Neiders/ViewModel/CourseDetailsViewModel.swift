@@ -93,7 +93,7 @@ class CourseDetailsViewModel:CourseDetailsViewModelProtocol {
                 case .success(let Contents):
                    
                    // self.arrayAdditionalCourse.append(contentsOf: Contents)
-                    let filteredArray = Contents.filter { $0.id != id && $0.deleted == false}
+                    let filteredArray = Contents.filter { $0.id != id && $0.deleted == false && $0.status == true}
                     self.arrayAdditionalCourse.append(contentsOf: filteredArray)
                     print("Successfully retrieved list  \(filteredArray.count)")
                     completion(.success(true))

@@ -14,6 +14,7 @@
 "Don't have an Account? Create an Account"  = "Vous n'avez pas de compte? créer un compte";
 "Create Account" = "Créer un compte";
 "Login" = "Connexion";
+"login" = "Connexion";
 "Full Name" = "Nom et prénom";
 "Email Id" = "Identifiant de courriel";
 "Phone Number" = "Numéro de téléphone";
@@ -71,3 +72,4 @@
 "English is already selected" = "Le français est déjà sélectionné";
 "Your mobile number verification is successful" = "La vérification de votre numéro de mobile est réussie";
 "Password field can not be blank" = "Le champ du mot de passe ne peut pas être vide";
+"You need to login to download" = "Vous devez vous connecter pour télécharger";

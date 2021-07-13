@@ -35,19 +35,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(frame: scene.coordinateSpace.bounds)
         self.window?.windowScene = scene
-        if let _ = UserDefaults.standard.value(forKey: "ID"){
+      //  if let _ = UserDefaults.standard.value(forKey: "ID"){
              let homeVC = HomeVC(nibName: "HomeVC", bundle: nil)
             let navigationController = UINavigationController(rootViewController: homeVC)
             navigationController.navigationBar.isHidden = true
             navigationController.setNeedsStatusBarAppearanceUpdate()
             window?.rootViewController = navigationController
-        }else {
-        let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: loginVC)
-        navigationController.navigationBar.isHidden = true
-        navigationController.setNeedsStatusBarAppearanceUpdate()
-        window?.rootViewController = navigationController
-        }
+//        }else {
+//        let loginVC = LogInVC(nibName: "LogInVC", bundle: nil)
+//        let navigationController = UINavigationController(rootViewController: loginVC)
+//        navigationController.navigationBar.isHidden = true
+//        navigationController.setNeedsStatusBarAppearanceUpdate()
+//        window?.rootViewController = navigationController
+//        }
         window?.makeKeyAndVisible()
     }
 

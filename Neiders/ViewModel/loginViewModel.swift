@@ -43,13 +43,13 @@ class loginViewModel: loginViewModelProtocol {
             case .success(let result):
                 switch result {
                 case .success(let user):
-                 //   print("Successfully retrieved list of todos: \(user.count)")
+//                    print("Successfully retrieved list of todos: \(String(describing: user[0].is_phone_valid))")
                     if (user.count == 1) {
                         UserDefaults.standard.setValue(user[0].email, forKey: "EMAIL")
                         UserDefaults.standard.setValue(user[0].full_name, forKey: "NAME")
                         UserDefaults.standard.setValue(user[0].id, forKey: "ID")
                         UserDefaults.standard.setValue(user[0].login_type, forKey: "LOGINTYPE")
-                        
+//                        UserDefaults.standard.setValue(user[0].is_phone_valid, forKey: "PHONEVALIDATE")
                         completion(.success(true))
                     }else if (user.count == 0) {
                         completion(.failure(NeidersError.customMessage("Wrong credential! \nPlease check your Email or Password".localized())))

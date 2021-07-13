@@ -44,11 +44,7 @@ class HomeVC: UIViewController,AlertDisplayer {
         setupUI()
         SidePanelViewController.default.delegate = self
        // SidePanelViewController.default.isloggedin = false
-        if let _ = UserDefaults.standard.value(forKey: "ID") {
-            SidePanelViewController.default.isloggedin = true
-        }else {
-            SidePanelViewController.default.isloggedin = false
-        }
+       
         viewModelHome = HomeViewModel()
         callContentList()
         txtSearch.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
@@ -57,14 +53,11 @@ class HomeVC: UIViewController,AlertDisplayer {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //            if let lang = UserDefaults.standard.value(forKey: "LANG") {
-        //                if lang as? String == "ENG" {
-        //                    Bundle.setLanguage("en")
-        //                }else {
-        //                    Bundle.setLanguage("fr")
-        //                }
-        //            }
+        if let _ = UserDefaults.standard.value(forKey: "ID") {
+            SidePanelViewController.default.isloggedin = true
+        }else {
+            SidePanelViewController.default.isloggedin = false
+        }
         languageSet()
         if (isFromFilter == true){
             if  self.viewModelHome?.arrayContentList.count == 0{
@@ -84,9 +77,12 @@ class HomeVC: UIViewController,AlertDisplayer {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
             if lang as? String == "ENG" {
                 Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
             }else {
                 Bundle.setLanguage("fr")
             }
+            
         }
         lblFilter.text = "Filter".localized()
         textSearchHere.placeholder = "Search here".localized()

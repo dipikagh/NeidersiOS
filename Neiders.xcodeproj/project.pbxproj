@@ -74,6 +74,8 @@
 		73A94FA926320FF70004B84E /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A94FA726320FF70004B84E /* HomeVC.xib */; };
 		73A94FAD263212D40004B84E /* CourseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A94FAB263212D40004B84E /* CourseCollectionCell.swift */; };
 		73A94FAE263212D40004B84E /* CourseCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A94FAC263212D40004B84E /* CourseCollectionCell.xib */; };
+		73B0731326943AC000D29E99 /* PhoneWithCountrycodeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B0731126943AC000D29E99 /* PhoneWithCountrycodeTableCell.swift */; };
+		73B0731426943AC000D29E99 /* PhoneWithCountrycodeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B0731226943AC000D29E99 /* PhoneWithCountrycodeTableCell.xib */; };
 		73B7A149264A7EE90040FCCD /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7A148264A7EE90040FCCD /* FilterViewModel.swift */; };
 		73C1F4FF264285280074781B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 73C1F4FC264285280074781B /* amplifyconfiguration.json */; };
 		73C1F500264285280074781B /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 73C1F4FD264285280074781B /* awsconfiguration.json */; };
@@ -143,6 +145,8 @@
 		732B138D2639E24000284A43 /* AdditionalCourseCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalCourseCollectionCell.xib; sourceTree = "<group>"; };
 		732FA33D263C42C70027F8D6 /* FilterOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionVC.swift; sourceTree = "<group>"; };
 		732FA33E263C42C70027F8D6 /* FilterOptionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOptionVC.xib; sourceTree = "<group>"; };
+		7339ECE026948E3700EFCD80 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7339ECE126948E3800EFCD80 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/localization.strings; sourceTree = "<group>"; };
 		733B28562644632700580CC5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7361C2E52649617B007ECC89 /* ContentUnit+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ContentUnit+Schema.swift"; path = "amplify/generated/models/ContentUnit+Schema.swift"; sourceTree = SOURCE_ROOT; };
 		7361C2E62649617B007ECC89 /* ContentUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentUnit.swift; path = amplify/generated/models/ContentUnit.swift; sourceTree = SOURCE_ROOT; };
@@ -170,6 +174,8 @@
 		73A94FA726320FF70004B84E /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		73A94FAB263212D40004B84E /* CourseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionCell.swift; sourceTree = "<group>"; };
 		73A94FAC263212D40004B84E /* CourseCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseCollectionCell.xib; sourceTree = "<group>"; };
+		73B0731126943AC000D29E99 /* PhoneWithCountrycodeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWithCountrycodeTableCell.swift; sourceTree = "<group>"; };
+		73B0731226943AC000D29E99 /* PhoneWithCountrycodeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneWithCountrycodeTableCell.xib; sourceTree = "<group>"; };
 		73B7A148264A7EE90040FCCD /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		73C1F4FC264285280074781B /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		73C1F4FD264285280074781B /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
@@ -426,6 +432,8 @@
 				737AE3EE26306FC900D9C6B1 /* SubmitTableViewCell.xib */,
 				7371BC942637081C00973EAD /* FilterCell.swift */,
 				7371BC952637081C00973EAD /* FilterCell.xib */,
+				73B0731126943AC000D29E99 /* PhoneWithCountrycodeTableCell.swift */,
+				73B0731226943AC000D29E99 /* PhoneWithCountrycodeTableCell.xib */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -524,6 +532,7 @@
 				en,
 				Base,
 				fr,
+				es,
 			);
 			mainGroup = 7306FD80262EBDBB0096B12A;
 			productRefGroup = 7306FD8A262EBDBB0096B12A /* Products */;
@@ -553,6 +562,7 @@
 				730B58F02632CEC400EC836A /* SidePanelTableViewCell.xib in Resources */,
 				73C1F4FF264285280074781B /* amplifyconfiguration.json in Resources */,
 				738E0C81265E828500087D2D /* UnitWebVC.xib in Resources */,
+				73B0731426943AC000D29E99 /* PhoneWithCountrycodeTableCell.xib in Resources */,
 				7306FDAE262EC62A0096B12A /* LogInVC.xib in Resources */,
 				730B58FA2632E2E200EC836A /* LanguageVC.xib in Resources */,
 				73139CF02630AA7C000E6126 /* EditPasswordVC.xib in Resources */,
@@ -651,6 +661,7 @@
 				7306FDB5262F047C0096B12A /* SignupVc.swift in Sources */,
 				730B58EC2632CE8C00EC836A /* SidePanelViewModel.swift in Sources */,
 				73139CD726309E40000E6126 /* RNCryptor.swift in Sources */,
+				73B0731326943AC000D29E99 /* PhoneWithCountrycodeTableCell.swift in Sources */,
 				730B58F92632E2E200EC836A /* LanguageVC.swift in Sources */,
 				73139CDF26309E40000E6126 /* ModelConfigurable.swift in Sources */,
 				7306FD97262EBDBB0096B12A /* Neiders.xcdatamodeld in Sources */,
@@ -700,6 +711,7 @@
 			children = (
 				7306FD9B262EBDBE0096B12A /* Base */,
 				73A29B232652AE8500DE604D /* fr */,
+				7339ECE026948E3700EFCD80 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -709,6 +721,7 @@
 			children = (
 				737BCCB5265394E400EFAE1F /* en */,
 				737BCCB7265394E900EFAE1F /* fr */,
+				7339ECE126948E3800EFCD80 /* es */,
 			);
 			name = localization.strings;
 			sourceTree = "<group>";
@@ -850,7 +863,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Intelgic.Neiders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = EnlightenedDevProvision;
@@ -876,7 +889,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Intelgic.Neiders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = EnlightenedDevProvision;

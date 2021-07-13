@@ -43,45 +43,77 @@ class EditPasswordViewModel: EditPasswordViewModelProtocol {
             completion(.failure(NeidersError.customMessage("New password and confirm new password field does not matched".localized())))
         }
         else {
-            Amplify.API.query(request: .get(Users.self, byId: Id))
-            { event in
-                switch event {
-                case .success(let result):
-                    switch result {
-                    case .success(var user):
-                        print("retrieved the user of description \(user as Any)")
-                        if (user?.password == self.arrayContainer[0]){
-                            user?.password = self.arrayContainer[1]
-                            print( user?.password as Any)
-                            
-                            let updatedTodo = user
-                            
-                            
-                            
-                            Amplify.DataStore.save(updatedTodo!) { result in
-                                switch result {
-                                case .success(let savedTodo):
-                                    
-                                    print("Updated item: \(savedTodo as Any )")
-                                    completion(.success(true))
-                                case .failure(let error):
-                                    completion(.success(false))
-                                    print("Could not update data with error: \(error)")
-                                }
-                            }
-                            
-                        }else {
-                            completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
-                        }
-                        
-                        
-                    case .failure(let error):
-                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                        print("Got failed result with \(error.errorDescription)")
+//            Amplify.API.query(request: .get(Users.self, byId: Id))
+//            { event in
+//                switch event {
+//                case .success(let result):
+//                    switch result {
+//                    case .success(var user):
+//                        print("retrieved the user of description \(user as Any)")
+//                        if (user?.password == self.arrayContainer[0]){
+//                            user?.password = self.arrayContainer[1]
+//                            print( user?.password as Any)
+//
+//                            let updatedTodo = user
+//
+//
+//
+//                            Amplify.DataStore.save(updatedTodo!) { result in
+//                                switch result {
+//                                case .success(let savedTodo):
+//
+//                                    print("Updated item: \(savedTodo as Any )")
+//                                    completion(.success(true))
+//                                case .failure(let error):
+//                                    completion(.success(false))
+//                                    print("Could not update data with error: \(error)")
+//                                }
+//                            }
+//
+//                        }else {
+//                            completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
+//                        }
+//
+//
+//                    case .failure(let error):
+//                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                        print("Got failed result with \(error.errorDescription)")
+//                    }
+//                case .failure(let error):
+//                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                    print("Got failed event with error \(error)")
+//                }
+//            }
+            
+            
+            Amplify.DataStore.query(Users.self,
+                                    where: Users.keys.id.eq("\(Id)")) { result in
+                switch(result) {
+                case .success(let user):
+                    guard user.count == 1, var updateduser = user.first else {
+                        print("Did not find exactly one todo, bailing")
+                        return
                     }
+                    if (updateduser.password == self.arrayContainer[0]){
+                        updateduser.password = self.arrayContainer[1]
+                        Amplify.DataStore.save(updateduser) { result in
+                            switch(result) {
+                            case .success(let savedTodo):
+                                print("Updated item: \(String(describing: savedTodo.password))")
+                                completion(.success(true))
+                            case .failure(let error):
+                                print("Could not update data in DataStore: \(error)")
+                                completion(.success(false))
+                            }
+                        }
+                    }
+                    else {
+                   completion(.failure(NeidersError.customMessage("Old Passsword is incorrect".localized())))
+                 }
+
                 case .failure(let error):
                     completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
-                    print("Got failed event with error \(error)")
+                    print("Could not query DataStore: \(error)")
                 }
             }
         }

@@ -1,0 +1,75 @@
+/* 
+  localization.strings
+  Neiders
+
+  Created by DIPIKA GHOSH on 18/05/21.
+  
+*/
+
+"Sign up" = "INSCRIBIRSE";
+"User Name" = "Nombre de usuario";
+"Password" = "Contraseña";
+"Forgot Password" = "¿Has olvidado tu contraseña?";
+"Log in with Facebook" = "Iniciar sesión con Facebook";
+"Don't have an Account? Create an Account" = "¿No tienes una cuenta? Crear una cuenta";
+"Create Account" = "Crea una cuenta";
+"Login" = "ACCESO";
+"login" = "Acceso";
+"Full Name" = "Nombre completo";
+"Email Id" = "Identificación de correo";
+"Phone Number" = "Número de teléfono";
+"I am" = "estoy";
+"Student" = "Alumno";
+"Teacher" = "Profesor";
+"Please enter your full name" = "Por favor ingresa tu nombre completo";
+"please enter your email address" = "Por favor, introduzca su dirección de correo electrónico";
+"please enter your proper email address" = "por favor ingrese su dirección de correo electrónico correcta";
+"please enter your password" = "Por favor, introduzca su contraseña";
+"Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols" = "La contraseña debe tener un mínimo de 8 caracteres, incluida la cadena superior, la cadena inferior, alfanuméricos y símbolos especiales.";
+"please enter your Phone number" = "por favor, introduzca su número de teléfono";
+"Please enter proper phone number" = "Ingrese el número de teléfono correcto";
+"please select user type" = "por favor seleccione el tipo de usuario";
+"This user is already exists. Please try with another information" = "Este usuario ya existe. Inténtelo con otra información.";
+"Some thing went wrong. Please try again later" = "Algo salió mal. Por favor, inténtelo de nuevo más tarde";
+"Wrong credential! \nPlease check your Email or Password" = "Credencial incorrecta. \nCompruebe su correo electrónico o contraseña";
+"Enter the OTP sent to your registered mobile number" = "Ingrese la OTP enviada a su número de móvil registrado";
+"Retype Password" = "Vuelva a escribir la contraseña";
+"Validate" = "VALIDAR";
+"Save" = "AHORRAR";
+"No data found" = "Datos no encontrados";
+"Filter" = "Filtrar";
+"Search here" = "Busca aquí";
+"Home" = "Casa";
+"Edit Password" = "Editar contraseña";
+"Language" = "Idioma";
+"Log out" = "Cerrar sesión";
+"Hello" = "Hola";
+"Old Password" = "Contraseña anterior";
+"New Password" = "Nueva contraseña";
+"Confirm New Password" = "Confirmar nueva contraseña";
+"Organisation Name" = "nombre de la organización";
+"Content Type" = "Tipo de contenido";
+"APPLY" = "SOLICITAR";
+"Additional Course" = "Curso adicional";
+"Select App default Language" = "Seleccione el idioma predeterminado de la aplicación";
+"CANCEL" = "CANCELAR";
+"Please select at least one option to continue." = "Seleccione al menos una opción para continuar.";
+"Are you sure you want to logout?" = "¿Estás seguro de que quieres cerrar sesión?";
+"YES" = "SÍ";
+"Sign up successful" = "Registrarse exitosamente";
+"Wrong OTP! Please try again" = "¡OTP incorrecta! Inténtalo de nuevo";
+"Old Passsword is incorrect" = "El viejo contraseña es incorrecto";
+"New password and confirm new password field does not matched" = "La nueva contraseña y el campo de confirmación de la nueva contraseña no coinciden";
+"Old Password field can not be blank" = "El campo de contraseña anterior no puede estar en blanco";
+"New Password field can not be blank" = "El campo Nueva contraseña no puede estar en blanco";
+"Confirm New Password field can not be blank" = "El campo Confirmar nueva contraseña no puede estar en blanco";
+"Email does not exit" = "El correo electrónico no sale";
+"RESEND OTP" = "REENVIAR OTP";
+"Time left" = "Tiempo restante";
+"Please enter registered email address" = "Ingrese la dirección de correo electrónico registrada";
+"Please enter 4 digit Otp" = "Ingrese Otp de 4 dígitos";
+"Please signin to continue" = "Por favor inicie sesión para continuar";
+"English is already selected" = "El inglés ya está seleccionado";
+"Your mobile number is verified  successfully" = "Su número de teléfono móvil se verificó correctamente";
+"Password field can not be blank" = "El campo de la contraseña no puede estar en blanco";
+"You need to login to download" = "Necesitas iniciar sesión para descargar";

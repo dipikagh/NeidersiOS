@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="PhoneWithCountrycodeTableCell" customModule="Neiders" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2W-CO-b8k">
+                        <rect key="frame" x="15" y="8" width="290" height="58"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Pg4-F1-wM9">
+                                <rect key="frame" x="8" y="14.5" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pg4-F1-wM9" secondAttribute="height" multiplier="1:1" id="DHM-3L-FZP"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+33334" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Png-4D-hKt">
+                                <rect key="frame" x="39" y="11" width="49.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20S-6m-eah">
+                                <rect key="frame" x="39" y="11" width="49.5" height="36"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LfM-oh-Zch">
+                                <rect key="frame" x="94.5" y="11" width="187.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" name="InputBox"/>
+                        <constraints>
+                            <constraint firstItem="20S-6m-eah" firstAttribute="height" secondItem="Png-4D-hKt" secondAttribute="height" id="1U2-63-tzt"/>
+                            <constraint firstItem="20S-6m-eah" firstAttribute="centerX" secondItem="Png-4D-hKt" secondAttribute="centerX" id="1rl-HU-gN2"/>
+                            <constraint firstItem="20S-6m-eah" firstAttribute="width" secondItem="Png-4D-hKt" secondAttribute="width" id="9Iw-Gc-TNu"/>
+                            <constraint firstItem="Pg4-F1-wM9" firstAttribute="leading" secondItem="H2W-CO-b8k" secondAttribute="leading" constant="8" id="EWg-F4-lRt"/>
+                            <constraint firstItem="20S-6m-eah" firstAttribute="centerY" secondItem="Png-4D-hKt" secondAttribute="centerY" id="FZA-Db-uDm"/>
+                            <constraint firstItem="Png-4D-hKt" firstAttribute="leading" secondItem="Pg4-F1-wM9" secondAttribute="trailing" constant="8" symbolic="YES" id="NwG-ib-no5"/>
+                            <constraint firstItem="LfM-oh-Zch" firstAttribute="top" secondItem="H2W-CO-b8k" secondAttribute="top" constant="11" id="OrM-yU-5et"/>
+                            <constraint firstItem="LfM-oh-Zch" firstAttribute="leading" secondItem="Png-4D-hKt" secondAttribute="trailing" constant="6" id="Vos-av-0AA"/>
+                            <constraint firstAttribute="bottom" secondItem="LfM-oh-Zch" secondAttribute="bottom" constant="11" id="ZYP-AG-ndr"/>
+                            <constraint firstItem="Pg4-F1-wM9" firstAttribute="width" secondItem="H2W-CO-b8k" secondAttribute="width" multiplier="0.08" id="awk-3h-Sbo"/>
+                            <constraint firstItem="Pg4-F1-wM9" firstAttribute="centerY" secondItem="H2W-CO-b8k" secondAttribute="centerY" multiplier="0.9" id="bLu-jr-Wm5"/>
+                            <constraint firstItem="Png-4D-hKt" firstAttribute="width" secondItem="H2W-CO-b8k" secondAttribute="width" multiplier="0.17" id="dog-5E-cTs"/>
+                            <constraint firstItem="Png-4D-hKt" firstAttribute="top" secondItem="H2W-CO-b8k" secondAttribute="top" constant="11" id="hsM-CN-49D"/>
+                            <constraint firstAttribute="bottom" secondItem="Png-4D-hKt" secondAttribute="bottom" constant="11" id="lrD-4f-M5G"/>
+                            <constraint firstAttribute="trailing" secondItem="LfM-oh-Zch" secondAttribute="trailing" constant="8" id="z6L-YB-gkp"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="H2W-CO-b8k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="JLR-fX-G17"/>
+                    <constraint firstAttribute="bottom" secondItem="H2W-CO-b8k" secondAttribute="bottom" constant="9" id="NHB-oN-fCc"/>
+                    <constraint firstItem="H2W-CO-b8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xa3-sU-DcG"/>
+                    <constraint firstAttribute="trailing" secondItem="H2W-CO-b8k" secondAttribute="trailing" constant="15" id="f1R-hY-8pZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnPickerShow" destination="20S-6m-eah" id="Ucp-Q2-LN1"/>
+                <outlet property="textFieldCountryCode" destination="Png-4D-hKt" id="gua-ZY-UNx"/>
+                <outlet property="textfieldPhoneNumber" destination="LfM-oh-Zch" id="p2b-nx-EYR"/>
+            </connections>
+            <point key="canvasLocation" x="60.869565217391312" y="63.950892857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="mobile_icon" width="45" height="81"/>
+        <namedColor name="InputBox">
+            <color red="0.9100000262260437" green="0.9100000262260437" blue="0.9100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

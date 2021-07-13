@@ -229,6 +229,94 @@ class ForgotPasswordViewModel:ForgotPasswordViewModelProtocol {
         
         
     }
+    
+    
+    
+    func UPdatePhoneVerification(isPhonevalid:Bool?,strid:String?,completion:@escaping (NeidersResult<Any?>) -> Void){
+        if (Reachability.isConnectedToNetwork()){
+////        print(strPassword)
+////        guard let newpassword = strPassword, newpassword.trimmed.count > 0 else {
+////            completion(.failure(NeidersError.customMessage("Password field can not be blank".localized())))
+////            return
+////        }
+//        if !newpassword.isValidPassword() {
+//            completion(.failure(NeidersError.customMessage("Password should be of min 8 characters including upper string,lower string,alphanumeric and special symbols".localized())))
+//        }else {
+            guard let Id = strid else {
+                completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+                return
+            }
+            print(Id)
+//            Amplify.API.query(request: .get(Users.self, byId: Id))
+//            { event in
+//                switch event {
+//                case .success(let result):
+//                    switch result {
+//                    case .success(var user):
+//                        print("retrieved the user of description \(user as Any)")
+//                        //   if (user?.password == self.arrayContainer[0]){
+//                        user?.password = strPassword
+//                        print( user?.password as Any)
+//
+//                        let updatedTodo = user
+//
+//
+//                        Amplify.DataStore.save(updatedTodo!) { result in
+//                            switch result {
+//                            case .success(let savedTodo):
+//
+//                                print("Updated item: \(savedTodo as Any )")
+//                                completion(.success(true))
+//                            case .failure(let error):
+//                                completion(.success(false))
+//                                print("Could not update data with error: \(error)")
+//                            }
+//                        }
+//
+//
+//                    case .failure(let error):
+//                        completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                        print("Got failed result with \(error.errorDescription)")
+//                    }
+//                case .failure(let error):
+//                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+//                    print("Got failed event with error \(error)")
+//                }
+//            }
+//        }
+            
+            Amplify.DataStore.query(Users.self,
+                                    where: Users.keys.id.eq("\(Id)")) { result in
+                switch(result) {
+                case .success(let user):
+                    guard user.count == 1, var updateduser = user.first else {
+                        print("Did not find exactly one todo, bailing")
+                        return
+                    }
+                    updateduser.is_phone_valid = isPhonevalid
+                    Amplify.DataStore.save(updateduser) { result in
+                        switch(result) {
+                        case .success(let savedTodo):
+                            print("Updated item: \(String(describing: savedTodo.password))")
+                            completion(.success(true))
+                        case .failure(let error):
+                            print("Could not update data in DataStore: \(error)")
+                            completion(.success(false))
+                        }
+                    }
+                case .failure(let error):
+                    completion(.failure(NeidersError.customMessage("Some thing went wrong. Please try again later".localized())))
+                    print("Could not query DataStore: \(error)")
+                }
+            }
+        
+        //}
+        }else {
+            completion(.failure(NeidersError.customMessage("Please check your internet connection".localized())))
+        }
+        
+        
+    }
 }
 
 

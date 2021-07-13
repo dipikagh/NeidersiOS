@@ -43,10 +43,10 @@ class SignupViewModel: SignupViewModelProtocol {
             completion(.failure(NeidersError.customMessage("please enter your Phone number".localized())))
             return
         }
-        guard phoneNumber.isValidPhoneNumber() else {
-            completion(.failure(NeidersError.customMessage("Please enter proper phone number".localized())))
-            return
-        }
+//        guard phoneNumber.isValidPhoneNumber() else {
+//            completion(.failure(NeidersError.customMessage("Please enter proper phone number".localized())))
+//            return
+//        }
         guard let loginType = loginType, loginType.trimmed.count > 0 else {
             completion(.failure(NeidersError.customMessage("please select user type".localized())))
             return
@@ -121,5 +121,39 @@ class SignupViewModel: SignupViewModelProtocol {
             }
         }
     }
+    
+   // MARK:- Auth Api Call
+    func signUp(username: String, password: String, email: String,phonenumber: String,completion:@escaping (NeidersResult<Any?>) -> Void) {
+        if Reachability.isConnectedToNetwork() {
+        let userAttributes = [AuthUserAttribute(.email, value: email)]
+        let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
+        Amplify.Auth.signUp(username: username, password: password, options: options) { result in
+            switch result {
+            case .success(let signUpResult):
+                print(signUpResult)
+//                if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
+//                    print("Delivery details \(String(describing: deliveryDetails))")
+//                } else {
+                    print("SignUp Complete")
+               // }
+//                self.callSingleSignup(fullName: fullName, email: email, phone: phoneNumber, password: password, loginType: loginType, completion: {(result) in
+//                    switch result {
+//                    case .success(let value):
+//                        if let success =  value as? Users {
+//                            completion(.success(success))
+//                        }
+//                    case .failure(let error):
+//                        completion(.failure(NeidersError.customMessage(error.localizedDescription)))
+//                        }
+//                })
+            case .failure(let error):
+                print("An error occurred while registering a user \(error)")
+            }
+        }
+        }else {
+            
+        }
+    }
+    
     
 }

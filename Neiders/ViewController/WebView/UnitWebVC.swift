@@ -23,14 +23,33 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
         webviewUnit.navigationDelegate = self
         btnDownload.layer.cornerRadius = btnDownload.frame.size.height/2
         btnDownload.backgroundColor = .gray
-        setupUI()
-        let url = URL(string: urlstr ?? "")!
-        webviewUnit.load(URLRequest(url: url))
+//        setupUI()
+//        let url = URL(string: urlstr ?? "")!
+//        webviewUnit.load(URLRequest(url: url))
         
         
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
+        let url = URL(string: urlstr ?? "")!
+        webviewUnit.load(URLRequest(url: url))
+        if let lang = UserDefaults.standard.value(forKey: "LANG") {
+            if lang as? String == "ENG" {
+                Bundle.setLanguage("en")
+            }else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
+            }else {
+                Bundle.setLanguage("fr")
+            }
+            
+        }
+    }
+  
+    
     func setupUI(){
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = self.view.center
@@ -70,14 +89,25 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
     }
     
     @IBAction func buttonDownload(_ sender: Any) {
-        if (Reachability.isConnectedToNetwork()){
-        if (contentType == "Video") {
-            downloadVideoLinkAndCreateAsset(urlstr ?? "")
+        if let _ = UserDefaults.standard.value(forKey: "ID") {
+            if (Reachability.isConnectedToNetwork()){
+            if (contentType == "Video") {
+                downloadVideoLinkAndCreateAsset(urlstr ?? "")
+            }else {
+                downloadFile()
+            }
+            }else {
+                showAlertWith(message: "Please check your internet connection".localized())
+            }
         }else {
-            downloadFile()
-        }
-        }else {
-            showAlertWith(message: "Please check your internet connection")
+            let alertOkAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                
+                let loginVc = LogInVC(nibName: "LogInVC", bundle: nil)
+                self.navigationController?.pushViewController(loginVc, animated: true)
+            }
+            self.showAlertWith(message: "You need to login to download".localized(), type: .custom(actions: [alertOkAction]))
+      
+       
         }
         
     }
@@ -98,7 +128,7 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
             let url = URL(string: urlString)
             let pdfData = try? Data.init(contentsOf: url!)
             let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-            let pdfNameFromUrl = "EnlightenGroove-\(fileName)"
+            let pdfNameFromUrl = "OC4D-\(fileName)"
             let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
             do {
                 try pdfData?.write(to: actualPath, options: .atomic)
@@ -119,27 +149,6 @@ class UnitWebVC: UIViewController,WKNavigationDelegate,AlertDisplayer {
     
     
     
-//    func downloadVideo() {
-//        let videoImageUrl = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-//
-//        DispatchQueue.global(qos: .background).async {
-//            if let url = URL(string: videoImageUrl),
-//               let urlData = NSData(contentsOf: url) {
-//                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
-//                let filePath="\(documentsPath)/tempFile.mp4"
-//                DispatchQueue.main.async {
-//                    urlData.write(toFile: filePath, atomically: true)
-//                    PHPhotoLibrary.shared().performChanges({
-//                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: filePath))
-//                    }) { completed, error in
-//                        if completed {
-//                            print("Video is saved!")
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     func downloadVideoLinkAndCreateAsset(_ videoLink: String) {
         

@@ -19,6 +19,8 @@ class LanguageVC: UIViewController,AlertDisplayer {
     
     @IBOutlet weak var imgFrench: UIImageView!
     @IBOutlet weak var imgEnglish: UIImageView!
+    @IBOutlet weak var imgSpanish: UIImageView!
+    
     var strSlectedLang = ""
     weak var delegate:LanguageSelectProtocol?
     
@@ -29,13 +31,24 @@ class LanguageVC: UIViewController,AlertDisplayer {
                 Bundle.setLanguage("en")
                 imgEnglish.image = UIImage(named: "active_radio_btn")
                 imgFrench.image = UIImage(named: "inactive_radio_btn")
+                imgSpanish.image = UIImage(named: "inactive_radio_btn")
                 strSlectedLang = "ENG"
                 // Do any additional setup after loading the view.
                 
-            }else {
+            } else if lang as? String == "ES" {
+                Bundle.setLanguage("es")
+                imgSpanish.image = UIImage(named: "active_radio_btn")
+                imgEnglish.image = UIImage(named: "inactive_radio_btn")
+                imgFrench.image = UIImage(named: "inactive_radio_btn")
+                strSlectedLang = "ES"
+                // Do any additional setup after loading the view.
+                
+            }
+            else {
                 Bundle.setLanguage("fr")
                 imgEnglish.image = UIImage(named: "inactive_radio_btn")
                 imgFrench.image = UIImage(named: "active_radio_btn")
+                imgSpanish.image = UIImage(named: "inactive_radio_btn")
                 strSlectedLang = "FR"
                 // Do any additional setup after loading the view.
                 
@@ -52,14 +65,24 @@ class LanguageVC: UIViewController,AlertDisplayer {
     @IBAction func btnEnglish(_ sender: Any) {
         imgEnglish.image = UIImage(named: "active_radio_btn")
         imgFrench.image = UIImage(named: "inactive_radio_btn")
+        imgSpanish.image = UIImage(named: "inactive_radio_btn")
         strSlectedLang = "ENG"
         
     }
     @IBAction func btnFrench(_ sender: Any) {
         imgEnglish.image = UIImage(named: "inactive_radio_btn")
         imgFrench.image = UIImage(named: "active_radio_btn")
+        imgSpanish.image = UIImage(named: "inactive_radio_btn")
         strSlectedLang = "FR"
     }
+    
+    @IBAction func btnSpanish(_ sender: Any) {
+        imgEnglish.image = UIImage(named: "inactive_radio_btn")
+        imgFrench.image = UIImage(named: "inactive_radio_btn")
+        imgSpanish.image = UIImage(named: "active_radio_btn")
+        strSlectedLang = "ES"
+    }
+    
     
     @IBAction func buttonApply(_ sender: Any) {
         if let lang = UserDefaults.standard.value(forKey: "LANG") {
@@ -84,7 +107,10 @@ class LanguageVC: UIViewController,AlertDisplayer {
             }else {
                 if (strSlectedLang == "ENG") {
                     UserDefaults.standard.set("ENG", forKey: "LANG")
-                }else {
+                }else  if (strSlectedLang == "ES") {
+                    UserDefaults.standard.set("ES", forKey: "LANG")
+                }
+                else {
                     UserDefaults.standard.set("FR", forKey: "LANG")
                 }
                 delegate?.setLanguageHome()
@@ -93,6 +119,9 @@ class LanguageVC: UIViewController,AlertDisplayer {
         }else {
             if (strSlectedLang == "ENG") {
                 UserDefaults.standard.set("ENG", forKey: "LANG")
+            }
+            else  if (strSlectedLang == "ES") {
+                UserDefaults.standard.set("ES", forKey: "LANG")
             }else {
                 UserDefaults.standard.set("FR", forKey: "LANG")
             }

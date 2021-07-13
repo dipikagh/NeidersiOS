@@ -7,13 +7,31 @@ PODS:
     - AppSyncRealTimeClient (~> 1.4.0)
     - AWSCore (~> 2.24.0)
     - AWSPluginsCore (= 1.9.0)
+  - AmplifyPlugins/AWSCognitoAuthPlugin (1.9.0):
+    - AWSAuthCore (~> 2.24.0)
+    - AWSCognitoIdentityProvider (~> 2.24.0)
+    - AWSCognitoIdentityProviderASF (~> 2.24.0)
+    - AWSCore (~> 2.24.0)
+    - AWSMobileClient (~> 2.24.0)
+    - AWSPluginsCore (= 1.9.0)
   - AmplifyPlugins/AWSDataStorePlugin (1.9.0):
     - AWSCore (~> 2.24.0)
     - AWSPluginsCore (= 1.9.0)
     - SQLite.swift (~> 0.12.0)
   - AppSyncRealTimeClient (1.4.4):
     - Starscream (~> 3.1.1)
+  - AWSAuthCore (2.24.0):
+    - AWSCore (= 2.24.0)
+  - AWSCognitoIdentityProvider (2.24.0):
+    - AWSCognitoIdentityProviderASF (= 2.24.0)
+    - AWSCore (= 2.24.0)
+  - AWSCognitoIdentityProviderASF (2.24.0)
   - AWSCore (2.24.0)
+  - AWSMobileClient (2.24.0):
+    - AWSAuthCore (= 2.24.0)
+    - AWSCognitoIdentityProvider (= 2.24.0)
+    - AWSCognitoIdentityProviderASF (= 2.24.0)
+    - AWSCore (= 2.24.0)
   - AWSPluginsCore (1.9.0):
     - Amplify (= 1.9.0)
     - AWSCore (~> 2.24.0)
@@ -33,6 +51,7 @@ PODS:
     - FBSDKCoreKit (~> 9.3.0)
   - JWTDecode (2.6.1)
   - Kingfisher (4.10.1)
+  - MRCountryPicker (0.0.8)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -42,25 +61,32 @@ DEPENDENCIES:
   - Amplify
   - Amplify/Tools
   - AmplifyPlugins/AWSAPIPlugin
+  - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
   - JWTDecode (~> 2.4)
   - Kingfisher (~> 4.0)
+  - MRCountryPicker
 
 SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
     - AppSyncRealTimeClient
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
     - AWSCore
+    - AWSMobileClient
     - AWSPluginsCore
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
     - JWTDecode
     - Kingfisher
+    - MRCountryPicker
     - SQLite.swift
     - Starscream
 
@@ -68,16 +94,21 @@ SPEC CHECKSUMS:
   Amplify: fdb7f9aad75a631449e2afb007f78f77deb25a84
   AmplifyPlugins: 5ffbe6b8aedfc19a16074acf7a67e6c237333a34
   AppSyncRealTimeClient: 4479354d262a23d2cc9fea1760f3815b75a4091a
+  AWSAuthCore: f5325c5e076e8da6ad66932029ddb04451aa28cd
+  AWSCognitoIdentityProvider: 874160e2f79fc957efd28745ee7389bccd59dfaf
+  AWSCognitoIdentityProviderASF: a604ce4b892fe7be0729d22a77a36f8b641e35a4
   AWSCore: d5cd1311b33a4ae9faacda839c0ac9fff711cd79
+  AWSMobileClient: 0cd4603f1dff10edb1e7b32e07753c864a21c5ed
   AWSPluginsCore: 34b987a116d75fb09852e2812cb53902d72c73c8
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
   FBSDKShareKit: 70889c97c62f0c6b3ccb8b999e73a85f19024001
   JWTDecode: 5e6d4b49c2b098f994cf7617401c195c8c06300b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MRCountryPicker: 1aeea66de25cdef79dce3b91d8ad9db643c1cc01
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 0dafd0fc31ad73aadf2535bbd818683a5595e700
+PODFILE CHECKSUM: 6c24f61b37be5383ba0afa98f11443c8dd84ccd2
 
 COCOAPODS: 1.10.1
